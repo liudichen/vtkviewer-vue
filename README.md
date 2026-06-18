@@ -18,7 +18,7 @@
 ### 1.1 核心功能
 
 - **强大的3D渲染引擎**：基于VTK.js的WebGL 2.0渲染引擎，支持面、线框、点等多种渲染样式
-- **多格式支持**：支持STL、OBJ、PLY、VTP、VTU、VTI、GLB、DRC、PDB、ZIP等10+种3D模型格式
+- **多格式支持**：支持STL、OBJ、PLY、VTP、VTU、VTI、GLB、DRC、PDB、ZIP等10+种3D模型格式,并支持自行扩展
 - **插件化架构**：所有功能通过插件实现，支持格式插件、工具栏插件、UI插件、服务插件四大类插件
 - **v-model 支持**：通过 `v-model:ctx` 获取内部 ViewerContext，事件监听和编程式控制触手可及
 - **完整的主题系统**：内置5套主题（light/dark/ocean/forest/sunset），支持自定义主题和CSS变量覆盖

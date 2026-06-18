@@ -17,7 +17,7 @@ A Vue 3 component based on VTK.js, providing powerful 3D model visualization cap
 ### 1.1 Core Features
 
 - **Powerful 3D Rendering Engine**: WebGL 2.0 rendering engine based on VTK.js, supporting multiple rendering styles such as surface, wireframe, and points
-- **Multi-format Support**: Supports 10+ 3D model formats including STL, OBJ, PLY, VTP, VTU, VTI, GLB, DRC, PDB, ZIP, etc.
+- **Multi-format Support**: Supports 10+ 3D model formats including STL, OBJ, PLY, VTP, VTU, VTI, GLB, DRC, PDB, ZIP, etc., with support for custom format extensions
 - **Plugin-based Architecture**: All features are implemented through plugins, supporting four major plugin types: format plugins, toolbar plugins, UI plugins, and service plugins
 - **v-model Support**: Get internal ViewerContext via `v-model:ctx` for event listening and programmatic control at your fingertips
 - **Complete Theme System**: Built-in 5 themes (light/dark/ocean/forest/sunset), supporting custom themes and CSS variable overrides
