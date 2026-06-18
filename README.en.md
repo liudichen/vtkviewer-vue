@@ -1,6 +1,6 @@
 # VtkViewer - VTK.js 3D Visualization Vue Component
 
-[中文](README.md) | [English](README.en.md)
+[English](README.en.md) | [中文](README.md)
 
 ![npm version](https://img.shields.io/npm/v/vtkviewer-vue)
 ![MIT License](https://img.shields.io/badge/license-MIT-blue)
@@ -311,7 +311,8 @@ Place the Draco decoder files (`draco_decoder.js` and `draco_decoder.wasm`) in t
 pnpm add draco3d
 ```
 
-After installation, the plugin will attempt to automatically load the Draco decoder.
+After installation, the plugin will attempt to automatically load the Draco decoder (this method may not always succeed, because special handling is done for the package name to bypass Vite's static detection, which may ignore the local package — please prefer Method 1).
+In fact, if neither is configured, the plugin will try to resolve the decoder from the path `/draco_decoder.js`. If that still doesn't exist, an exception will be thrown.
 
 ---
 
@@ -550,7 +551,7 @@ interface VtkViewerProps {
 ### 4.2 Plugin Configuration: PluginsConfig
 
 ```typescript
-import type { PluginItem, FormatPluginItem } from 'vtkviewer-vue/plugins'
+import type { PluginItem, FormatPluginItem } from 'vtkviewer-vue'
 
 interface PluginsConfig {
   /** Format plugins: responsible for parsing different 3D model formats */
@@ -579,7 +580,7 @@ interface PluginsConfig {
 
 ```typescript
 import { PluginsConfig } from 'vtkviewer-vue'
-import { StlPlugin, ObjPlugin, RotatePlugin, ZoomPlugin } from 'vtkviewer-vue/plugins'
+import { StlPlugin, ObjPlugin, RotatePlugin, ZoomPlugin } from 'vtkviewer-vue'
 
 const plugins: PluginsConfig = {
   format: [
@@ -1010,8 +1011,8 @@ If you want to disable the language switch plugin:
   <VtkViewer
     :plugins="{
       toolbar: [
-        // Exclude language switch plugin
-        ...defaultPlugins.filter(p => p[0].metadata.id !== 'languageSwitch')
+        // Exclude language switch plugin, configure plugins as needed
+        ...
       ]
     }"
   />
@@ -1033,8 +1034,8 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 // Wrap vue-i18n's t function to be compatible with VtkViewer's signature
-function myTranslateFunction(key: string): string {
-  return t(key) || key
+function myTranslateFunction(key: string, options?: any): string {
+  return t(key, options) || key
 }
 </script>
 ```
@@ -1094,11 +1095,11 @@ vtkviewer.module.subKey
 | `vtkviewer.source.formatNotDetected` | 无法识别文件格式，请提供 sourceFormat | Unable to detect file format, please provide sourceFormat |
 | `vtkviewer.plugin.stl.description` | STL格式处理器（支持ASCII和二进制） | STL format processor (supports ASCII and binary) |
 
-You can view the complete built-in language packs in the `src/configs/locales/` directory.
+You can view `BUILTIN_LANGS` for the complete built-in language packs.
 
 ### 6.6 Using Internationalization in Custom Plugins
 
-In custom toolbar plugins, you can translate via the `i18n` singleton or `ctx.i18n`:
+In custom toolbar plugins, you can translate via the `i18n` singleton:
 
 **Method 1: Imperative Translation (Suitable for utility functions, logs, etc.)**
 
