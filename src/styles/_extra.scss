@@ -1,0 +1,67 @@
+// ============================================================
+// IIMM VTK Viewer - Extra Toggle & Content Styles
+// Expand/collapse button and extra content area
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Extra toggle button ----
+.iimm-vtk-extra-toggle {
+  @include iimm-vtk-button-reset;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--iimm-vtk-z-toolbar-extra);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--iimm-vtk-extra-toggle-width, 28px);
+  height: var(--iimm-vtk-extra-toggle-height, 16px);
+  border: 1px solid var(--iimm-vtk-extra-toggle-border-color);
+  border-radius: var(--iimm-vtk-extra-toggle-radius, 0 0 6px 6px);
+  background: var(--iimm-vtk-extra-toggle-bg);
+  @include iimm-vtk-glass-effect;
+  color: var(--iimm-vtk-extra-toggle-color);
+  transition: all var(--iimm-vtk-transition-normal);
+  line-height: 1;
+
+  &:hover {
+    background: var(--iimm-vtk-extra-toggle-bg-hover);
+    color: var(--iimm-vtk-extra-toggle-color-hover);
+    border-color: var(--iimm-vtk-extra-toggle-border-color);
+  }
+
+  &:active {
+    transform: translateX(-50%) scale(0.92);
+  }
+
+  svg {
+    transition: transform var(--iimm-vtk-transition-slow);
+  }
+
+  &.is-collapsed svg {
+    transform: rotate(180deg);
+  }
+}
+
+// ---- Extra content area ----
+.iimm-vtk-extra {
+  width: 100%;
+  position: absolute;
+  z-index: var(--iimm-vtk-z-panel);
+}
+
+// ---- Fade transition ----
+.iimm-vtk-extra-fade-enter-active,
+.iimm-vtk-extra-fade-leave-active {
+  transition: opacity var(--iimm-vtk-transition-normal),
+              transform var(--iimm-vtk-transition-normal);
+  transform-origin: top;
+}
+
+.iimm-vtk-extra-fade-enter-from,
+.iimm-vtk-extra-fade-leave-to {
+  opacity: 0;
+  transform: scaleY(0.85);
+}

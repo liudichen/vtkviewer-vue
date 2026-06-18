@@ -1,0 +1,327 @@
+// ============================================================
+// IIMM VTK Viewer - CSS Variables (Semantic Design System)
+// ============================================================
+
+:root {
+  // ============================================================
+  // 12. SEMANTIC TYPOGRAPHY
+  // ============================================================
+
+  // Font sizes (scale: 9-10-11-12-13-16)
+  --iimm-vtk-text-xs: 9px;          // Badge、极小标签
+  --iimm-vtk-text-sm: 11px;         // 辅助文本、label、次要信息
+  --iimm-vtk-text-base: 12px;       // 正文、选项文字、按钮文字
+  --iimm-vtk-text-lg: 13px;         // 标题、面板标题
+  --iimm-vtk-text-xl: 16px;         // 弹窗主标题
+  --iimm-vtk-text-xxs: 10px;        // 微型文字（色条值等）
+
+  // Font weights
+  --iimm-vtk-font-normal: 400;
+  --iimm-vtk-font-medium: 500;
+  --iimm-vtk-font-semibold: 600;
+  --iimm-vtk-font-bold: 700;
+
+  // Line heights
+  --iimm-vtk-leading-tight: 1.2;
+  --iimm-vtk-leading-normal: 1.4;
+  --iimm-vtk-leading-relaxed: 1.6;
+
+  // Letter spacing
+  --iimm-vtk-tracking-normal: 0;
+  --iimm-vtk-tracking-tight: 0.3px;
+  --iimm-vtk-tracking-wide: 0.5px;
+
+  // Font families
+  --iimm-vtk-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --iimm-vtk-font-mono: 'Fira Code', 'SF Mono', 'Cascadia Code', monospace;
+
+  // ============================================================
+  // 13. SEMANTIC SPACING & RADIUS
+  // ============================================================
+
+  --iimm-vtk-spacing-xs: 4px;
+  --iimm-vtk-spacing-sm: 6px;
+  --iimm-vtk-spacing-base: 8px;
+  --iimm-vtk-spacing-lg: 12px;
+  --iimm-vtk-spacing-xl: 16px;
+
+  --iimm-vtk-radius-sm: 4px;
+  --iimm-vtk-radius-base: 6px;
+  --iimm-vtk-radius-lg: 8px;
+  --iimm-vtk-radius-xl: 10px;
+  --iimm-vtk-radius-full: 50%;
+
+  // ============================================================
+  // 14. SEMANTIC COLORS
+  // ============================================================
+
+  // ---- Text ----
+  --iimm-vtk-color-text-primary: #e0e0e0;
+  --iimm-vtk-color-text-secondary: rgba(255, 255, 255, 0.6);
+  --iimm-vtk-color-text-disabled: rgba(255, 255, 255, 0.35);
+  --iimm-vtk-color-text-inverse: #1a1a2e;
+  --iimm-vtk-color-text-accent: #64ffda;
+
+  // ---- Background ----
+  --iimm-vtk-color-surface: #2a2a3e;
+  --iimm-vtk-color-surface-raised: #1e1e30;
+  --iimm-vtk-color-overlay: rgba(0, 0, 0, 0.55);
+
+  // ---- Border ----
+  --iimm-vtk-color-border: rgba(255, 255, 255, 0.12);
+  --iimm-vtk-color-border-light: rgba(255, 255, 255, 0.08);
+
+  // ---- Interactive ----
+  --iimm-vtk-color-interactive-hover: rgba(255, 255, 255, 0.12);
+  --iimm-vtk-color-interactive-active: rgba(100, 255, 218, 0.18);
+
+  // ---- Accent ----
+  --iimm-vtk-color-accent: #64ffda;
+  --iimm-vtk-color-accent-muted: rgba(100, 255, 218, 0.25);
+
+  // ---- Input ----
+  --iimm-vtk-color-input-bg: rgba(0, 0, 0, 0.25);
+  --iimm-vtk-color-input-border: rgba(255, 255, 255, 0.12);
+  --iimm-vtk-color-input-focus: #64ffda;
+
+  // ---- Slider ----
+  --iimm-vtk-color-slider-track: rgba(255, 255, 255, 0.1);
+  --iimm-vtk-color-slider-thumb: #64ffda;
+
+  // ---- Status ----
+  --iimm-vtk-color-info: #60a5fa;
+  --iimm-vtk-color-success: #4ade80;
+  --iimm-vtk-color-error: #ef4444;
+  --iimm-vtk-color-error-text: #fca5a5;
+  --iimm-vtk-color-warning: #f59e0b;
+
+  // ---- Toggle Switch ----
+  --iimm-vtk-color-toggle-off: rgba(255, 255, 255, 0.15);
+  --iimm-vtk-color-toggle-on: #64ffda;
+  --iimm-vtk-color-toggle-knob: #ffffff;
+
+  // ---- Divider ----
+  --iimm-vtk-color-divider: rgba(255, 255, 255, 0.12);
+
+  // ============================================================
+  // 0. VIEWER DIMENSIONS
+  // ============================================================
+
+  --iimm-vtk-width: 100%;
+  --iimm-vtk-height: 100%;
+  --iimm-vtk-min-width: 0;
+
+  // ============================================================
+  // 1. TOOLBAR
+  // ============================================================
+
+  --iimm-vtk-toolbar-bg: var(--iimm-vtk-color-surface, rgba(167, 165, 165, 0.6));
+  --iimm-vtk-toolbar-radius: var(--iimm-vtk-radius-lg, 8px);
+  --iimm-vtk-toolbar-padding: var(--iimm-vtk-spacing-base, 8px);
+  --iimm-vtk-toolbar-gap: var(--iimm-vtk-spacing-xs, 4px);
+  --iimm-vtk-toolbar-border-color: var(--iimm-vtk-color-border, rgba(255, 255, 255, 0.1));
+  --iimm-vtk-toolbar-backdrop-blur: 8px;
+
+  // ============================================================
+  // 2. TOOLBAR BUTTON
+  // ============================================================
+
+  --iimm-vtk-btn-size: 32px;
+  --iimm-vtk-btn-bg: rgba(255, 255, 255, 0.06);
+  --iimm-vtk-btn-bg-hover: var(--iimm-vtk-color-interactive-hover, rgba(255, 255, 255, 0.15));
+  --iimm-vtk-btn-bg-active: var(--iimm-vtk-color-interactive-active, rgba(100, 255, 218, 0.2));
+  --iimm-vtk-btn-radius: var(--iimm-vtk-radius-base, 6px);
+  --iimm-vtk-btn-border-color: transparent;
+  --iimm-vtk-btn-border-color-hover: rgba(255, 255, 255, 0.2);
+  --iimm-vtk-btn-color: var(--iimm-vtk-color-text-primary, #e0e0e0);
+  --iimm-vtk-btn-color-hover: #ffffff;
+  --iimm-vtk-btn-color-active: var(--iimm-vtk-color-accent, #64ffda);
+  --iimm-vtk-btn-transition: all 0.2s ease;
+
+  // ============================================================
+  // 3. TOOLBAR ICON
+  // ============================================================
+
+  --iimm-vtk-icon-size: 20px;
+
+  // ============================================================
+  // 4. TOOLBAR SEPARATOR
+  // ============================================================
+
+  --iimm-vtk-toolbar-separator-color: rgba(255, 255, 255, 0.2);
+  --iimm-vtk-toolbar-separator-size: 1px;
+  --iimm-vtk-toolbar-separator-height: 20px;
+  --iimm-vtk-toolbar-separator-margin: 0 4px;
+
+  // ============================================================
+  // 5. EXTENSION
+  // ============================================================
+
+  --iimm-vtk-extension-bg: rgba(167, 165, 165, 0.6);
+  --iimm-vtk-extension-radius: var(--iimm-vtk-radius-lg, 8px);
+  --iimm-vtk-extension-padding: var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px);
+  --iimm-vtk-extension-gap: 2px;
+  --iimm-vtk-extension-min-height: 28px;
+  --iimm-vtk-extension-separator-color: rgba(255, 255, 255, 0.2);
+  --iimm-vtk-extension-separator-height: 16px;
+  --iimm-vtk-extension-separator-margin: 0 4px;
+  --iimm-vtk-extension-font-size: var(--iimm-vtk-text-sm, 11px);
+  --iimm-vtk-extension-btn-size: 28px;
+  --iimm-vtk-extension-icon-size: 16px;
+
+  // ============================================================
+  // 6. INFO PANEL
+  // ============================================================
+
+  --iimm-vtk-info-panel-bg: rgba(167, 165, 165, 0.6);
+  --iimm-vtk-info-panel-radius: var(--iimm-vtk-radius-lg, 8px);
+  --iimm-vtk-info-panel-padding: var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px);
+  --iimm-vtk-info-panel-font-size: var(--iimm-vtk-text-base, 12px);
+  --iimm-vtk-info-panel-max-height: 120px;
+  --iimm-vtk-info-panel-gap-x: var(--iimm-vtk-spacing-lg, 12px);
+  --iimm-vtk-info-panel-gap-y: var(--iimm-vtk-spacing-xs, 4px);
+  --iimm-vtk-info-panel-label-color: var(--iimm-vtk-color-text-secondary, rgba(255, 255, 255, 0.6));
+  --iimm-vtk-info-panel-value-color: rgba(255, 255, 255, 0.9);
+
+  // ============================================================
+  // 7. POPUP / DROPDOWN / PANEL
+  // ============================================================
+
+  --iimm-vtk-popup-bg: var(--iimm-vtk-color-surface, #2a2a3e);
+  --iimm-vtk-popup-bg-secondary: var(--iimm-vtk-color-surface-raised, #1e1e30);
+  --iimm-vtk-popup-border-color: var(--iimm-vtk-color-border, rgba(255, 255, 255, 0.12));
+  --iimm-vtk-popup-radius: var(--iimm-vtk-radius-lg, 8px);
+  --iimm-vtk-popup-padding: var(--iimm-vtk-spacing-xl, 10px);
+  --iimm-vtk-popup-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --iimm-vtk-popup-font-size: var(--iimm-vtk-text-base, 12px);
+  --iimm-vtk-popup-color: var(--iimm-vtk-color-text-primary, #e0e0e0);
+  --iimm-vtk-popup-label-color: var(--iimm-vtk-color-text-secondary, rgba(255, 255, 255, 0.6));
+
+  // ============================================================
+  // 8. POPUP INPUT
+  // ============================================================
+
+  --iimm-vtk-input-bg: var(--iimm-vtk-color-input-bg, rgba(0, 0, 0, 0.25));
+  --iimm-vtk-input-border-color: var(--iimm-vtk-color-input-border, rgba(255, 255, 255, 0.12));
+  --iimm-vtk-input-border-color-focus: var(--iimm-vtk-color-input-focus, #64ffda);
+  --iimm-vtk-input-radius: var(--iimm-vtk-radius-sm, 4px);
+  --iimm-vtk-input-padding: var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px);
+  --iimm-vtk-input-font-size: var(--iimm-vtk-text-base, 12px);
+  --iimm-vtk-input-color: var(--iimm-vtk-color-text-primary, #e0e0e0);
+
+  // ============================================================
+  // 9. POPUP SLIDER
+  // ============================================================
+
+  --iimm-vtk-slider-track-bg: var(--iimm-vtk-color-slider-track, rgba(255, 255, 255, 0.1));
+  --iimm-vtk-slider-thumb-bg: var(--iimm-vtk-color-slider-thumb, #64ffda);
+  --iimm-vtk-slider-thumb-size: 12px;
+
+  // ============================================================
+  // 10. TRANSITIONS
+  // ============================================================
+
+  --iimm-vtk-transition-fast: 0.15s ease;
+  --iimm-vtk-transition-normal: 0.25s ease;
+  --iimm-vtk-transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // ============================================================
+  // 11. Z-INDEX LAYERS
+  // ============================================================
+
+  --iimm-vtk-z-panel: 50;
+  --iimm-vtk-z-toolbar: 100;
+  --iimm-vtk-z-toolbar-extra: 110;
+  --iimm-vtk-z-overlay: 500;
+  --iimm-vtk-z-popup: 1000;
+  --iimm-vtk-z-notification: 5000;
+  --iimm-vtk-z-max: 9999;
+
+  // ============================================================
+  // LOADING / ERROR / PORTAL (keep existing as-is)
+  // ============================================================
+
+  --iimm-vtk-loading-bg: var(--iimm-vtk-color-overlay, rgba(0, 0, 0, 0.55));
+  --iimm-vtk-loading-card-bg: rgba(255, 255, 255, 0.07);
+  --iimm-vtk-loading-card-border-color: rgba(255, 255, 255, 0.1);
+  --iimm-vtk-loading-card-radius: 20px;
+  --iimm-vtk-loading-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --iimm-vtk-loading-card-padding: 32px 40px 28px;
+  --iimm-vtk-loading-card-gap: var(--iimm-vtk-spacing-xl, 20px);
+  --iimm-vtk-loading-ring-size: 88px;
+  --iimm-vtk-loading-spinner-size: 18px;
+  --iimm-vtk-loading-bar-width: 160px;
+  --iimm-vtk-loading-bar-height: 3px;
+  --iimm-vtk-loading-info-font-size: var(--iimm-vtk-text-sm, 11px);
+  --iimm-vtk-loading-stage-font-size: var(--iimm-vtk-text-lg, 13px);
+  --iimm-vtk-loading-text-color: rgba(255, 255, 255, 0.92);
+  --iimm-vtk-loading-text-secondary: rgba(255, 255, 255, 0.75);
+  --iimm-vtk-loading-progress-gradient: linear-gradient(90deg, #60a5fa, #34d399);
+
+  --iimm-vtk-error-bg: rgba(220, 38, 38, 0.15);
+  --iimm-vtk-error-border-color: rgba(220, 38, 38, 0.3);
+  --iimm-vtk-error-overlay-bg: rgba(0, 0, 0, 0.45);
+  --iimm-vtk-error-color: var(--iimm-vtk-color-error-text, #fca5a5);
+  --iimm-vtk-error-card-padding: 24px 32px;
+  --iimm-vtk-error-card-gap: var(--iimm-vtk-spacing-lg, 12px);
+  --iimm-vtk-error-card-radius: 12px;
+  --iimm-vtk-error-card-max-width: 400px;
+  --iimm-vtk-error-icon-size: 32px;
+  --iimm-vtk-error-message-font-size: var(--iimm-vtk-text-lg, 13px);
+
+  --iimm-vtk-portal-panel-bg: var(--iimm-vtk-color-surface, #2a2a3e);
+  --iimm-vtk-portal-panel-border-color: rgba(255, 255, 255, 0.1);
+  --iimm-vtk-portal-panel-radius: var(--iimm-vtk-radius-lg, 8px);
+  --iimm-vtk-portal-panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --iimm-vtk-portal-panel-padding: var(--iimm-vtk-spacing-lg, 12px);
+  --iimm-vtk-portal-panel-min-width: 200px;
+  --iimm-vtk-portal-notification-bg: var(--iimm-vtk-color-surface, #2a2a3e);
+  --iimm-vtk-portal-notification-radius: var(--iimm-vtk-radius-lg, 8px);
+  --iimm-vtk-portal-notification-top: 16px;
+  --iimm-vtk-portal-notification-right: 16px;
+  --iimm-vtk-portal-notification-padding: var(--iimm-vtk-spacing-lg, 12px) var(--iimm-vtk-spacing-xl, 16px);
+  --iimm-vtk-portal-notification-max-width: 360px;
+  --iimm-vtk-portal-notification-font-size: var(--iimm-vtk-text-lg, 13px);
+
+  // 注意：下方默认值须与 _themes.scss 中浅色主题一致（默认主题为 light）
+  --iimm-vtk-extra-toggle-bg: rgba(255, 255, 255, 0.9);
+  --iimm-vtk-extra-toggle-bg-hover: rgba(255, 255, 255, 1);
+  --iimm-vtk-extra-toggle-border-color: rgba(0, 0, 0, 0.1);
+  --iimm-vtk-extra-toggle-color: rgba(0, 0, 0, 0.5);
+  --iimm-vtk-extra-toggle-color-hover: rgba(0, 0, 0, 0.8);
+  --iimm-vtk-extra-toggle-width: 28px;
+  --iimm-vtk-extra-toggle-height: 16px;
+  --iimm-vtk-extra-toggle-radius: 0 0 6px 6px;
+
+  // ============================================================
+  // SCENE TREE PANEL
+  // ============================================================
+
+  --iimm-vtk-scene-tree-z: 100;
+  --iimm-vtk-scene-tree-toggle-top: 50%;
+  --iimm-vtk-scene-tree-toggle-z: 101;
+  --iimm-vtk-scene-tree-toggle-width: 24px;
+  --iimm-vtk-scene-tree-toggle-height: 48px;
+  --iimm-vtk-scene-tree-toggle-radius: var(--iimm-vtk-radius-base, 6px);
+  --iimm-vtk-scene-tree-toggle-font-size: var(--iimm-vtk-text-base, 12px);
+  --iimm-vtk-scene-tree-panel-blur: 8px;
+  --iimm-vtk-scene-tree-color-picker-z: 200;
+  --iimm-vtk-scene-tree-color-picker-width: 160px;
+  // ---- Scene tree layout ----
+  --iimm-vtk-scene-tree-header-padding: var(--iimm-vtk-spacing-base, 8px) var(--iimm-vtk-spacing-lg, 12px);
+  --iimm-vtk-scene-tree-title-font-size: var(--iimm-vtk-text-lg, 13px);
+  --iimm-vtk-scene-tree-title-font-weight: var(--iimm-vtk-font-semibold, 600);
+  --iimm-vtk-scene-tree-close-size: 22px;
+  --iimm-vtk-scene-tree-list-padding: var(--iimm-vtk-spacing-xs, 4px) 0;
+  --iimm-vtk-scene-tree-empty-height: 60px;
+  --iimm-vtk-scene-tree-item-padding: var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px);
+  --iimm-vtk-scene-tree-item-margin: 1px var(--iimm-vtk-spacing-xs, 4px);
+  --iimm-vtk-scene-tree-item-row-gap: var(--iimm-vtk-spacing-sm, 6px);
+  --iimm-vtk-scene-tree-item-checkbox-size: 14px;
+  --iimm-vtk-scene-tree-item-type-font-size: var(--iimm-vtk-text-xxs, 10px);
+  --iimm-vtk-scene-tree-item-type-width: 16px;
+  --iimm-vtk-scene-tree-item-name-font-size: var(--iimm-vtk-text-base, 12px);
+  --iimm-vtk-scene-tree-color-picker-padding: var(--iimm-vtk-spacing-base, 8px);
+  --iimm-vtk-scene-tree-color-preview-height: 20px;
+  --iimm-vtk-scene-tree-color-close-height: 24px;
+}

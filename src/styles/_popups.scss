@@ -1,0 +1,224 @@
+// ============================================================
+// IIMM VTK Viewer - Popup & Dropdown Styles
+// Unified style for all popup/dropdown/panel components
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Dropdown wrapper (relative container for button + dropdown) ----
+.iimm-vtk-dropdown {
+  position: relative;
+  display: inline-flex;
+}
+
+// ---- Dropdown panel content (positioned below button) ----
+.iimm-vtk-dropdown-content {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--iimm-vtk-z-popup);
+  @include iimm-vtk-popup-panel;
+  min-width: 160px;
+  animation: iimm-vtk-dropdown-enter var(--iimm-vtk-transition-normal) ease;
+}
+
+// ---- Settings panel (positioned below button, left-aligned) ----
+.iimm-vtk-settings-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: var(--iimm-vtk-z-popup);
+  @include iimm-vtk-popup-panel;
+  min-width: 180px;
+  max-width: 280px;
+  animation: iimm-vtk-dropdown-enter var(--iimm-vtk-transition-normal) ease;
+}
+
+// ---- Panel section ----
+.iimm-vtk-popup-section {
+  @include iimm-vtk-popup-section;
+}
+
+// ---- Panel row ----
+.iimm-vtk-popup-row {
+  @include iimm-vtk-popup-row;
+}
+
+// ---- Panel label ----
+.iimm-vtk-popup-label {
+  @include iimm-vtk-popup-label;
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+// ---- Unified popup header row ----
+.iimm-vtk-popup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--iimm-vtk-spacing-base, 8px);
+  padding-bottom: var(--iimm-vtk-spacing-base, 8px);
+  margin-bottom: var(--iimm-vtk-spacing-base, 8px);
+  border-bottom: 1px solid var(--iimm-vtk-popup-border-color);
+}
+
+// ---- Panel title (larger, bolder than label) ----
+.iimm-vtk-popup-title {
+  font-size: var(--iimm-vtk-text-lg, 13px);
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+  color: var(--iimm-vtk-popup-color);
+  white-space: nowrap;
+  flex: 1;
+}
+
+// ---- Panel value highlight (accent color, bold) ----
+.iimm-vtk-popup-value-accent {
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+  color: var(--iimm-vtk-btn-color-active);
+}
+
+// ---- Panel input ----
+.iimm-vtk-popup-input {
+  @include iimm-vtk-popup-input;
+}
+
+// ---- Panel select ----
+.iimm-vtk-popup-select {
+  @include iimm-vtk-popup-input;
+  cursor: pointer;
+  padding-right: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+
+  option {
+    background: var(--iimm-vtk-popup-bg);
+    color: var(--iimm-vtk-popup-color);
+  }
+}
+
+// ---- Panel slider ----
+.iimm-vtk-popup-slider {
+  @include iimm-vtk-range-slider;
+  flex: 1;
+}
+
+// ---- Panel toggle switch ----
+.iimm-vtk-popup-toggle {
+  @include iimm-vtk-toggle-switch;
+  flex-shrink: 0;
+}
+
+// ---- Panel checkbox ----
+.iimm-vtk-popup-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--iimm-vtk-btn-color-active);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+// ---- Panel divider ----
+.iimm-vtk-popup-divider {
+  @include iimm-vtk-popup-divider;
+}
+
+// ---- Panel button ----
+.iimm-vtk-popup-btn {
+  @include iimm-vtk-button-reset;
+  padding: 4px 10px;
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: var(--iimm-vtk-input-radius);
+  background: var(--iimm-vtk-input-bg);
+  color: var(--iimm-vtk-popup-color);
+  font-size: var(--iimm-vtk-popup-font-size);
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+    border-color: var(--iimm-vtk-btn-border-color-hover);
+  }
+
+  &.is-primary {
+    background: var(--iimm-vtk-btn-bg-active);
+    border-color: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-btn-color-active);
+  }
+}
+
+// ---- Color picker wrapper ----
+.iimm-vtk-color-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  input[type='color'] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ---- Color indicator ----
+.iimm-vtk-color-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  flex-shrink: 0;
+}
+
+// ---- View select (native select) ----
+.iimm-vtk-view-select {
+  @include iimm-vtk-popup-input;
+  cursor: pointer;
+  min-width: 80px;
+
+  option {
+    background: var(--iimm-vtk-popup-bg);
+    color: var(--iimm-vtk-popup-color);
+  }
+}
+
+// ---- Dropdown content animation ----
+@keyframes iimm-vtk-dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// ---- Slider row (flex row for - [slider] + buttons) ----
+.iimm-vtk-popup-slider-row {
+  @include iimm-vtk-popup-row;
+  gap: var(--iimm-vtk-spacing-sm, 6px);
+}
+
+// ---- Popup text (centered text inside dropdown) ----
+.iimm-vtk-popup-text {
+  text-align: center;
+  font-size: var(--iimm-vtk-popup-font-size);
+  color: var(--iimm-vtk-popup-label-color);
+}
+
+// ---- Settings panel animation ----
+@keyframes iimm-vtk-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

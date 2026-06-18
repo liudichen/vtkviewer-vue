@@ -1,0 +1,81 @@
+// ============================================================
+// IIMM VTK Viewer - Language Switch Dropdown Styles
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Language switch container ----
+.iimm-vtk-language-switch {
+  position: relative;
+}
+
+// ---- Language switch button ----
+.iimm-vtk-language-switch-btn {
+  position: relative;
+  gap: var(--iimm-vtk-spacing-xs, 2px);
+
+  .iimm-vtk-toolbar-icon {
+    opacity: var(--iimm-vtk-language-icon-opacity, 0.6);
+  }
+}
+
+// ---- Current language code badge ----
+.iimm-vtk-language-current {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--iimm-vtk-language-badge-font-size, var(--iimm-vtk-text-xxs, 10px));
+  font-weight: var(--iimm-vtk-font-bold, 700);
+  line-height: 1;
+  color: var(--iimm-vtk-btn-color-active);
+  background: var(--iimm-vtk-language-badge-bg, var(--iimm-vtk-btn-bg-active));
+  padding: var(--iimm-vtk-language-badge-padding, 0 3px);
+  border-radius: var(--iimm-vtk-language-badge-radius, 3px);
+}
+
+// ---- Language dropdown ----
+.iimm-vtk-language-dropdown {
+  @include iimm-vtk-popup-panel;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 130px;
+  padding: 4px;
+  animation: iimm-vtk-language-dropdown-in 0.2s ease;
+  transform-origin: top right;
+}
+
+@keyframes iimm-vtk-language-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ---- Language option row ----
+.iimm-vtk-language-option {
+  @include iimm-vtk-popup-row;
+  padding: var(--iimm-vtk-spacing-sm, 6px) var(--iimm-vtk-spacing-base, 8px);
+  border-radius: var(--iimm-vtk-input-radius);
+  cursor: pointer;
+  transition: background var(--iimm-vtk-transition-fast);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+  }
+
+  &.is-active {
+    background: var(--iimm-vtk-btn-bg-active);
+  }
+}
+
+// ---- Language label ----
+.iimm-vtk-language-label {
+  flex: 1;
+  font-size: var(--iimm-vtk-text-base, 12px);
+  color: var(--iimm-vtk-popup-color);
+}

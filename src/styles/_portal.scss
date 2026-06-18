@@ -1,0 +1,84 @@
+// ============================================================
+// IIMM VTK Viewer - UI Portal Styles
+// Portal components rendered via Teleport
+// ============================================================
+
+// ---- Portal container ----
+.iimm-vtk-portal {
+  position: relative;
+  z-index: var(--iimm-vtk-z-panel);
+}
+
+// ---- Portal overlay ----
+.iimm-vtk-portal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+// ---- Portal panel ----
+.iimm-vtk-portal-panel {
+  position: absolute;
+  z-index: var(--iimm-vtk-z-popup);
+  background: var(--iimm-vtk-portal-panel-bg);
+  border: 1px solid var(--iimm-vtk-portal-panel-border-color);
+  border-radius: var(--iimm-vtk-portal-panel-radius);
+  box-shadow: var(--iimm-vtk-portal-panel-shadow);
+  padding: var(--iimm-vtk-portal-panel-padding, var(--iimm-vtk-spacing-lg, 12px));
+  min-width: var(--iimm-vtk-portal-panel-min-width, 200px);
+  font-family: var(--iimm-vtk-font-family);
+  animation: iimm-vtk-panel-enter var(--iimm-vtk-transition-normal) ease;
+}
+
+// ---- Portal notification ----
+.iimm-vtk-portal-notification {
+  position: fixed;
+  top: var(--iimm-vtk-portal-notification-top, 16px);
+  right: var(--iimm-vtk-portal-notification-right, 16px);
+  z-index: var(--iimm-vtk-z-notification);
+  background: var(--iimm-vtk-portal-notification-bg);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: var(--iimm-vtk-portal-notification-radius);
+  box-shadow: var(--iimm-vtk-popup-shadow);
+  padding: var(--iimm-vtk-portal-notification-padding, var(--iimm-vtk-spacing-lg, 12px) var(--iimm-vtk-spacing-xl, 16px));
+  max-width: var(--iimm-vtk-portal-notification-max-width, 360px);
+  font-family: var(--iimm-vtk-font-family);
+  font-size: var(--iimm-vtk-portal-notification-font-size, var(--iimm-vtk-text-lg, 13px));
+  color: var(--iimm-vtk-popup-color);
+  animation: iimm-vtk-notification-enter 0.3s ease;
+}
+
+// ---- Notification types ----
+.iimm-vtk-portal-notification--info {
+  border-left: 3px solid var(--iimm-vtk-color-info, #60a5fa);
+}
+
+.iimm-vtk-portal-notification--success {
+  border-left: 3px solid var(--iimm-vtk-color-success, #34d399);
+}
+
+.iimm-vtk-portal-notification--warning {
+  border-left: 3px solid var(--iimm-vtk-color-warning, #fbbf24);
+}
+
+.iimm-vtk-portal-notification--error {
+  border-left: 3px solid var(--iimm-vtk-color-error, #ef4444);
+}
+
+@keyframes iimm-vtk-notification-enter {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

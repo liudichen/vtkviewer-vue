@@ -1,0 +1,45 @@
+// ============================================================
+// IIMM VTK Viewer - Filename Info Bar Styles
+// Bottom status bar showing current model filename/source
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Filename info bar ----
+.iimm-vtk-filename-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--iimm-vtk-z-overlay, 500);
+  display: flex;
+  align-items: center;
+  gap: var(--iimm-vtk-spacing-sm, 6px);
+  padding: 0 var(--iimm-vtk-spacing-lg, 12px);
+  height: 24px;
+  background: var(--iimm-vtk-extension-bg, rgba(167, 165, 165, 0.6));
+  border-top: 1px solid var(--iimm-vtk-popup-border-color, rgba(255, 255, 255, 0.1));
+  border-radius: var(--iimm-vtk-extension-radius, var(--iimm-vtk-radius-lg, 8px)) var(--iimm-vtk-extension-radius, var(--iimm-vtk-radius-lg, 8px)) 0 0;
+  font-family: var(--iimm-vtk-font-family);
+  pointer-events: none;
+  user-select: none;
+}
+
+// ---- Icon ----
+.iimm-vtk-filename-info-icon {
+  font-size: 13px;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+// ---- Filename text ----
+.iimm-vtk-filename-info-text {
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  color: var(--iimm-vtk-popup-color, #e0e0e0);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: var(--iimm-vtk-leading-tight, 1.2);
+}

@@ -1,0 +1,422 @@
+/**
+ * 图层/场景树面板样式
+ * 左侧/右侧面板显示场景中的所有 Actor / Volume
+ * 所有 z-index / 宽高 / 位置 均由 CSS 变量控制
+ */
+@use 'variables' as *;
+
+// ============================================================
+// 场景树容器
+// ============================================================
+
+.iimm-vtk-scene-tree {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: var(--iimm-vtk-scene-tree-z, 100);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}
+
+// 右侧面板
+.iimm-vtk-scene-tree--right {
+  right: 0;
+  left: auto;
+  flex-direction: row;
+}
+
+// 左侧面板
+.iimm-vtk-scene-tree--left {
+  left: 0;
+  right: auto;
+  flex-direction: row-reverse;
+}
+
+// ============================================================
+// 切换按钮
+// ============================================================
+
+.iimm-vtk-scene-toggle {
+  position: relative;
+  top: var(--iimm-vtk-scene-tree-toggle-top, 50%);
+  transform: translateY(-50%);
+  z-index: var(--iimm-vtk-scene-tree-toggle-z, 101);
+  width: var(--iimm-vtk-scene-tree-toggle-width, 24px);
+  height: var(--iimm-vtk-scene-tree-toggle-height, 48px);
+  font-size: var(--iimm-vtk-scene-tree-toggle-font-size, 12px);
+  border: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+  background: var(--iimm-vtk-popup-bg, rgba(30, 30, 46, 0.92));
+  color: var(--iimm-vtk-btn-color, #c9d1d9);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(var(--iimm-vtk-scene-tree-panel-blur, 8px));
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover, rgba(255, 255, 255, 0.15));
+    color: var(--iimm-vtk-btn-color-hover, #e6edf3);
+  }
+
+  &.is-expanded {
+    display: none;
+  }
+}
+
+// 右侧面板的切换按钮（圆角在左侧）
+.iimm-vtk-scene-tree--right .iimm-vtk-scene-toggle {
+  border-right: none;
+  border-radius: var(--iimm-vtk-scene-tree-toggle-radius, 6px) 0 0 var(--iimm-vtk-scene-tree-toggle-radius, 6px);
+}
+
+// 左侧面板的切换按钮（圆角在右侧）
+.iimm-vtk-scene-tree--left .iimm-vtk-scene-toggle {
+  border-left: none;
+  border-radius: 0 var(--iimm-vtk-scene-tree-toggle-radius, 6px) var(--iimm-vtk-scene-tree-toggle-radius, 6px) 0;
+}
+
+// ============================================================
+// 面板主体
+// ============================================================
+
+.iimm-vtk-scene-panel {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  background: var(--iimm-vtk-popup-bg, rgba(30, 30, 46, 0.92));
+  backdrop-filter: blur(var(--iimm-vtk-scene-tree-panel-blur, 8px));
+  overflow: hidden;
+  transition: width var(--iimm-vtk-transition-normal, 0.25s ease);
+
+  &.is-expanded {
+    display: flex;
+  }
+}
+
+// 右侧面板：左边框
+.iimm-vtk-scene-tree--right .iimm-vtk-scene-panel {
+  border-left: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+}
+
+// 左侧面板：右边框
+.iimm-vtk-scene-tree--left .iimm-vtk-scene-panel {
+  border-right: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+}
+
+// ============================================================
+// 面板头部
+// ============================================================
+
+.iimm-vtk-scene-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--iimm-vtk-scene-tree-header-padding, var(--iimm-vtk-spacing-base, 8px) var(--iimm-vtk-spacing-lg, 12px));
+  border-bottom: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.12));
+  flex-shrink: 0;
+}
+
+.iimm-vtk-scene-title {
+  font-size: var(--iimm-vtk-scene-tree-title-font-size, var(--iimm-vtk-text-lg, 13px));
+  font-weight: var(--iimm-vtk-scene-tree-title-font-weight, var(--iimm-vtk-font-semibold, 600));
+  color: var(--iimm-vtk-btn-color, #c9d1d9);
+  user-select: none;
+}
+
+.iimm-vtk-scene-close {
+  width: var(--iimm-vtk-scene-tree-close-size, 22px);
+  height: var(--iimm-vtk-scene-tree-close-size, 22px);
+  border: none;
+  border-radius: var(--iimm-vtk-btn-radius, 4px);
+  background: transparent;
+  color: var(--iimm-vtk-btn-color, #c9d1d9);
+  font-size: var(--iimm-vtk-scene-tree-title-font-size, var(--iimm-vtk-text-lg, 13px));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+    background: var(--iimm-vtk-btn-bg-hover, rgba(255, 255, 255, 0.1));
+  }
+}
+
+// ============================================================
+// 列表
+// ============================================================
+
+.iimm-vtk-scene-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--iimm-vtk-scene-tree-list-padding, var(--iimm-vtk-spacing-xs, 4px) 0);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--iimm-vtk-btn-bg-hover, rgba(255, 255, 255, 0.12));
+    border-radius: 2px;
+  }
+}
+
+// ============================================================
+// 空状态
+// ============================================================
+
+.iimm-vtk-scene-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--iimm-vtk-scene-tree-empty-height, 60px);
+  font-size: var(--iimm-vtk-scene-tree-item-name-font-size, var(--iimm-vtk-text-base, 12px));
+  color: var(--iimm-vtk-popup-label-color, rgba(201, 209, 217, 0.5));
+  user-select: none;
+}
+
+// ============================================================
+// 单一条目
+// ============================================================
+
+.iimm-vtk-scene-item {
+  padding: var(--iimm-vtk-scene-tree-item-padding, var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px));
+  margin: var(--iimm-vtk-scene-tree-item-margin, 1px var(--iimm-vtk-spacing-xs, 4px));
+  border-radius: var(--iimm-vtk-btn-radius, 6px);
+  transition: background var(--iimm-vtk-transition-fast, 0.15s ease);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover, rgba(255, 255, 255, 0.06));
+  }
+
+  &.is-hidden {
+    opacity: 0.5;
+  }
+}
+
+.iimm-vtk-scene-item-row {
+  display: flex;
+  align-items: center;
+  gap: var(--iimm-vtk-scene-tree-item-row-gap, var(--iimm-vtk-spacing-sm, 6px));
+  margin-top: 2px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// 复选框
+.iimm-vtk-scene-item-checkbox {
+  flex-shrink: 0;
+  width: var(--iimm-vtk-scene-tree-item-checkbox-size, 14px);
+  height: var(--iimm-vtk-scene-tree-item-checkbox-size, 14px);
+  cursor: pointer;
+  accent-color: var(--iimm-vtk-btn-bg-active, #58a6ff);
+}
+
+// 类型图标
+.iimm-vtk-scene-item-type {
+  flex-shrink: 0;
+  font-size: var(--iimm-vtk-scene-tree-item-type-font-size, var(--iimm-vtk-text-xxs, 10px));
+  width: var(--iimm-vtk-scene-tree-item-type-width, 16px);
+  text-align: center;
+  user-select: none;
+
+  &.is-actor {
+    color: var(--iimm-vtk-popup-label-color, #58a6ff);
+  }
+  &.is-volume {
+    color: var(--iimm-vtk-popup-label-color, #a371f7);
+  }
+}
+
+// 名称
+.iimm-vtk-scene-item-name {
+  flex: 1;
+  font-size: var(--iimm-vtk-scene-tree-item-name-font-size, var(--iimm-vtk-text-base, 12px));
+  color: var(--iimm-vtk-btn-color, #c9d1d9);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+}
+
+// ============================================================
+// 不透明度滑块
+// ============================================================
+
+.iimm-vtk-scene-item-opacity {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.iimm-vtk-scene-item-opacity-slider {
+  flex: 1;
+  height: 3px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--iimm-vtk-slider-track-bg, rgba(255, 255, 255, 0.15));
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--iimm-vtk-slider-thumb-bg, #58a6ff);
+    cursor: pointer;
+    border: none;
+  }
+
+  &::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--iimm-vtk-slider-thumb-bg, #58a6ff);
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.iimm-vtk-scene-item-opacity-value {
+  flex-shrink: 0;
+  font-size: 11px;
+  min-width: 30px;
+  text-align: right;
+  color: var(--iimm-vtk-popup-label-color, rgba(201, 209, 217, 0.7));
+}
+
+// ============================================================
+// 颜色色块
+// ============================================================
+
+.iimm-vtk-scene-item-color {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--iimm-vtk-btn-radius, 4px);
+  cursor: pointer;
+  border: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+  position: relative;
+  transition: transform var(--iimm-vtk-transition-fast, 0.15s ease);
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &.is-picking {
+    z-index: 10;
+    transform: scale(1.15);
+  }
+}
+
+// ============================================================
+// 颜色选择器弹窗
+// ============================================================
+
+.iimm-vtk-scene-color-picker {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  z-index: var(--iimm-vtk-scene-tree-color-picker-z, 200);
+  width: var(--iimm-vtk-scene-tree-color-picker-width, 160px);
+  padding: var(--iimm-vtk-scene-tree-color-picker-padding, var(--iimm-vtk-spacing-base, 8px));
+  background: var(--iimm-vtk-popup-bg, #2d2d3f);
+  border: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+  border-radius: var(--iimm-vtk-popup-radius, 8px);
+  box-shadow: var(--iimm-vtk-popup-shadow, 0 4px 16px rgba(0, 0, 0, 0.3));
+}
+
+// RGB 滑块组
+.iimm-vtk-scene-color-slider-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+
+  &:last-of-type {
+    margin-bottom: 6px;
+  }
+}
+
+.iimm-vtk-scene-color-slider-label {
+  flex-shrink: 0;
+  width: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--iimm-vtk-btn-color, #c9d1d9);
+  user-select: none;
+  text-align: center;
+}
+
+.iimm-vtk-scene-color-slider {
+  flex: 1;
+  height: 3px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--iimm-vtk-slider-track-bg, rgba(255, 255, 255, 0.15));
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.iimm-vtk-scene-color-slider-value {
+  flex-shrink: 0;
+  width: 26px;
+  font-size: 10px;
+  text-align: right;
+  color: var(--iimm-vtk-popup-label-color, rgba(201, 209, 217, 0.7));
+}
+
+// 预览色块
+.iimm-vtk-scene-color-preview {
+  display: block;
+  width: 100%;
+  height: var(--iimm-vtk-scene-tree-color-preview-height, 20px);
+  border-radius: var(--iimm-vtk-btn-radius, 4px);
+  border: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+  margin-bottom: var(--iimm-vtk-spacing-xs, 4px);
+}
+
+// 关闭按钮
+.iimm-vtk-scene-color-close {
+  width: 100%;
+  height: var(--iimm-vtk-scene-tree-color-close-height, 24px);
+  border: 1px solid var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.15));
+  border-radius: var(--iimm-vtk-btn-radius, 4px);
+  background: var(--iimm-vtk-btn-bg, rgba(255, 255, 255, 0.06));
+  color: var(--iimm-vtk-btn-color, #c9d1d9);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  cursor: pointer;
+  transition: background var(--iimm-vtk-transition-fast, 0.15s ease);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover, rgba(255, 255, 255, 0.12));
+  }
+}

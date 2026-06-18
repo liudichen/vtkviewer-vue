@@ -1,0 +1,55 @@
+// ============================================================
+// IIMM VTK Viewer - Style System Entry Point
+// Import this file for the complete VTK viewer styles
+// ============================================================
+
+// Core
+@use 'variables';
+@use 'themes';
+@use 'mixins' as *;
+
+// Components
+@use 'toolbar';
+@use 'extension';
+@use 'info-panel';
+@use 'popups';
+@use 'loading';
+@use 'portal';
+@use 'extra';
+@use 'theme-switch';
+@use 'language-switch';
+@use 'bookmark';
+@use 'screenshot';
+@use 'load-model';
+@use 'scene-tree';
+@use 'filename-info';
+
+// ---- Container base ----
+.iimm-vtk-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: var(--iimm-vtk-width, 100%);
+  height: var(--iimm-vtk-height, 100%);
+  min-width: var(--iimm-vtk-min-width, 0);
+  overflow: hidden;
+  font-family: var(--iimm-vtk-font-family);
+}
+
+// ---- Content area ----
+.iimm-vtk-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+// ---- Viewer canvas area ----
+.iimm-vtk-canvas {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}

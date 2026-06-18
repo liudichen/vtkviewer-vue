@@ -1,0 +1,99 @@
+// ============================================================
+// IIMM VTK Viewer - Theme Switch Dropdown Styles
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Theme switch container ----
+.iimm-vtk-theme-switch {
+  position: relative;
+}
+
+// ---- Theme switch button ----
+.iimm-vtk-theme-switch-btn {
+  position: relative;
+
+  // Active indicator dot
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--iimm-vtk-btn-color-active);
+    opacity: 0.8;
+  }
+}
+
+// ---- Theme dropdown ----
+.iimm-vtk-theme-dropdown {
+  @include iimm-vtk-popup-panel;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  padding: 4px;
+  animation: iimm-vtk-theme-dropdown-in 0.2s ease;
+  transform-origin: top right;
+}
+
+@keyframes iimm-vtk-theme-dropdown-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ---- Theme option row ----
+.iimm-vtk-theme-option {
+  @include iimm-vtk-popup-row;
+  padding: var(--iimm-vtk-spacing-sm, 6px) var(--iimm-vtk-spacing-base, 8px);
+  border-radius: var(--iimm-vtk-input-radius);
+  cursor: pointer;
+  transition: background var(--iimm-vtk-transition-fast);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+  }
+
+  &.is-active {
+    background: var(--iimm-vtk-btn-bg-active);
+  }
+}
+
+// ---- Theme preview — 三色板 ----
+.iimm-vtk-theme-preview {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+  padding: 1px;
+  border-radius: 4px;
+  background: var(--iimm-vtk-popup-border, rgba(255, 255, 255, 0.12));
+}
+
+.iimm-vtk-theme-preview-swatch {
+  display: block;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+// ---- Theme name ----
+.iimm-vtk-theme-name {
+  flex: 1;
+  font-size: var(--iimm-vtk-text-base, 12px);
+  color: var(--iimm-vtk-popup-color);
+}
+
+// ---- Check mark ----
+.iimm-vtk-theme-check {
+  font-size: var(--iimm-vtk-text-base, 12px);
+  color: var(--iimm-vtk-btn-color-active);
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+}

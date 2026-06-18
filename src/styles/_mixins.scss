@@ -1,0 +1,193 @@
+// ============================================================
+// IIMM VTK Viewer - Mixins (Semantic Design System)
+// All mixins prefixed with iimm-vtk- to avoid conflicts
+// when VtkViewer is used alongside other components/libraries.
+// ============================================================
+
+// ---- Glassmorphism backdrop ----
+@mixin iimm-vtk-glass-effect($blur: var(--iimm-vtk-toolbar-backdrop-blur)) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+// ---- Button reset ----
+@mixin iimm-vtk-button-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ---- Scrollbar styling ----
+@mixin iimm-vtk-custom-scrollbar($thumb-color: var(--iimm-vtk-color-interactive-hover, rgba(255, 255, 255, 0.2)), $width: 4px) {
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color transparent;
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: $width;
+  }
+}
+
+// ---- Popup panel base ----
+@mixin iimm-vtk-popup-panel {
+  position: absolute;
+  z-index: var(--iimm-vtk-z-popup);
+  background: var(--iimm-vtk-popup-bg);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: var(--iimm-vtk-popup-radius);
+  padding: var(--iimm-vtk-popup-padding);
+  box-shadow: var(--iimm-vtk-popup-shadow);
+  color: var(--iimm-vtk-popup-color);
+  font-size: var(--iimm-vtk-popup-font-size);
+  font-family: var(--iimm-vtk-font-family);
+  user-select: none;
+}
+
+// ---- Popup label ----
+@mixin iimm-vtk-popup-label {
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  color: var(--iimm-vtk-popup-label-color);
+  white-space: nowrap;
+  letter-spacing: var(--iimm-vtk-tracking-tight, 0.3px);
+}
+
+// ---- Popup input ----
+@mixin iimm-vtk-popup-input {
+  width: 100%;
+  padding: var(--iimm-vtk-input-padding);
+  background: var(--iimm-vtk-input-bg);
+  border: 1px solid var(--iimm-vtk-input-border-color);
+  border-radius: var(--iimm-vtk-input-radius);
+  color: var(--iimm-vtk-input-color);
+  font-size: var(--iimm-vtk-input-font-size);
+  font-family: var(--iimm-vtk-font-mono);
+  outline: none;
+  transition: border-color var(--iimm-vtk-transition-fast);
+
+  &:focus {
+    border-color: var(--iimm-vtk-input-border-color-focus);
+  }
+}
+
+// ---- Popup row layout ----
+@mixin iimm-vtk-popup-row($gap: var(--iimm-vtk-spacing-base, 8px)) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+// ---- Popup section ----
+@mixin iimm-vtk-popup-section($gap: var(--iimm-vtk-spacing-base, 8px)) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+// ---- Popup divider ----
+@mixin iimm-vtk-popup-divider {
+  height: 1px;
+  background: var(--iimm-vtk-color-divider);
+  margin: var(--iimm-vtk-spacing-sm, 6px) 0;
+}
+
+// ---- Toggle switch ----
+@mixin iimm-vtk-toggle-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: var(--iimm-vtk-color-toggle-off, rgba(255, 255, 255, 0.15));
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background var(--iimm-vtk-transition-fast);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: var(--iimm-vtk-color-toggle-knob, #ffffff);
+    border-radius: var(--iimm-vtk-radius-full, 50%);
+    transition: transform var(--iimm-vtk-transition-fast);
+  }
+
+  &.is-active,
+  &[aria-checked='true'] {
+    background: var(--iimm-vtk-btn-color-active);
+
+    &::after {
+      transform: translateX(16px);
+    }
+  }
+}
+
+// ---- Range slider ----
+@mixin iimm-vtk-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--iimm-vtk-slider-track-bg);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--iimm-vtk-slider-thumb-size);
+    height: var(--iimm-vtk-slider-thumb-size);
+    background: var(--iimm-vtk-slider-thumb-bg);
+    border-radius: var(--iimm-vtk-radius-full, 50%);
+    cursor: pointer;
+    transition: transform var(--iimm-vtk-transition-fast);
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: var(--iimm-vtk-slider-thumb-size);
+    height: var(--iimm-vtk-slider-thumb-size);
+    background: var(--iimm-vtk-slider-thumb-bg);
+    border: none;
+    border-radius: var(--iimm-vtk-radius-full, 50%);
+    cursor: pointer;
+  }
+}
+
+// ---- Responsive breakpoint helpers ----
+@mixin iimm-vtk-breakpoint-xs {
+  @media (max-width: 479px) { @content; }
+}
+
+@mixin iimm-vtk-breakpoint-sm {
+  @media (min-width: 480px) and (max-width: 767px) { @content; }
+}
+
+@mixin iimm-vtk-breakpoint-md {
+  @media (min-width: 768px) and (max-width: 1023px) { @content; }
+}
+
+@mixin iimm-vtk-breakpoint-lg {
+  @media (min-width: 1024px) { @content; }
+}

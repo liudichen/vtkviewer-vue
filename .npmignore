@@ -1,0 +1,77 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor
+.vscode/
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# pnpm
+.pnpm-store
+
+# 测试覆盖率
+coverage
+
+# 临时文件目录（项目规则）
+.claw
+
+# 示例数据目录（项目规则）
+# 存放从网站下载的示例文件和生成的样例数据
+# 文件不删除，但也不追踪
+datasets
+
+# SWR 缓存
+.swr
+
+# vue-tsc 构建产物（src 目录下的 .js 和 .js.map）
+src/**/*.js
+src/**/*.js.map
+
+# TypeScript 构建信息
+*.tsbuildinfo
+
+# 测试配置构建产物
+vitest.config.js
+vitest.config.js.map
+
+# 脚本构建产物
+scripts/**/*.js
+scripts/**/*.js.map
+
+public/datasets/
+
+demo/
+memo/
+public/
+scripts/
+project/
+src/
+*.yaml
+*.html
+*.tsbuildinfo
+eslint.config.cjs
+.gitignore
+.prettierrc
+vite.config.ts
+vite.library.config.ts

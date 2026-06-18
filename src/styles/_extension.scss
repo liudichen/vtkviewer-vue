@@ -1,0 +1,108 @@
+// ============================================================
+// IIMM VTK Viewer - Toolbar Extension Styles
+// Extension area below main toolbar
+// NOTE: Class names and CSS vars are intentionally distinct
+//       from main toolbar to allow independent customization
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Extension container ----
+.iimm-vtk-extension {
+  position: relative;
+  z-index: var(--iimm-vtk-z-panel);
+  display: none; // hidden by default, shown via :has() when content exists
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--iimm-vtk-extension-gap);
+  padding: var(--iimm-vtk-extension-padding);
+  background: var(--iimm-vtk-extension-bg);
+  border-bottom: 1px solid var(--iimm-vtk-toolbar-border-color);
+  border-radius: var(--iimm-vtk-extension-radius);
+  @include iimm-vtk-glass-effect;
+  min-height: var(--iimm-vtk-extension-min-height, 28px);
+  font-family: var(--iimm-vtk-font-family);
+  font-size: var(--iimm-vtk-extension-font-size);
+  user-select: none;
+
+  // Auto-show when content exists
+  &:has(.iimm-vtk-extension-item) {
+    display: flex;
+  }
+}
+
+// ---- Extension content wrapper ----
+.iimm-vtk-extension-item {
+  display: flex;
+  align-items: center;
+  gap: var(--iimm-vtk-extension-item-gap,8px);
+  flex-wrap: wrap;
+}
+
+.iimm-vtk-extension-item-with-label-wrapper {
+  display: flex;
+  flex-direction: var(--iimm-vtk-extension-item-with-label-wrapper-flex-direction, row);
+  align-items: var(--iimm-vtk-extension-item-with-label-wrapper-align-items, center);
+  justify-content: var(--iimm-vtk-extension-item-with-label-wrapper-justify-content, flex-start);
+  gap: var(--iimm-vtk-extension-item-with-label-wrapper-gap, 4px)
+}
+
+// ---- Extension separator ----
+.iimm-vtk-extension-separator {
+  width: 1px;
+  height: var(--iimm-vtk-extension-separator-height, 16px);
+  margin: var(--iimm-vtk-extension-separator-margin, 0 4px);
+  background: var(--iimm-vtk-extension-separator-color);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+// ---- Extension button (smaller than toolbar) ----
+.iimm-vtk-extension-btn {
+  @include iimm-vtk-button-reset;
+  width: var(--iimm-vtk-extension-btn-size);
+  height: var(--iimm-vtk-extension-btn-size);
+  border: 1px solid transparent;
+  border-radius: var(--iimm-vtk-btn-radius);
+  background: var(--iimm-vtk-btn-bg);
+  color: var(--iimm-vtk-btn-color);
+  transition: var(--iimm-vtk-btn-transition);
+  font-size: var(--iimm-vtk-extension-font-size);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+    color: var(--iimm-vtk-btn-color-hover);
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  &.is-active {
+    background: var(--iimm-vtk-btn-bg-active);
+    border-color: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-btn-color-active);
+  }
+}
+
+// ---- Extension icon ----
+.iimm-vtk-extension-icon {
+  width: var(--iimm-vtk-extension-icon-size);
+  height: var(--iimm-vtk-extension-icon-size);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg, [data-icon] {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ---- Extension label ----
+.iimm-vtk-extension-label {
+  font-size: var(--iimm-vtk-extension-font-size);
+  color: var(--iimm-vtk-btn-color);
+  white-space: nowrap;
+}

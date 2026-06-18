@@ -1,0 +1,295 @@
+// ============================================================
+// IIMM VTK Viewer - Loading & Error Overlay Styles
+// ============================================================
+
+// ---- Overlay base ----
+.iimm-vtk-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--iimm-vtk-z-overlay);
+  pointer-events: none;
+}
+
+// ---- Loading overlay ----
+.iimm-vtk-loading {
+  background: var(--iimm-vtk-loading-bg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: auto;
+  animation: iimm-vtk-loading-fadein 0.3s ease;
+}
+
+@keyframes iimm-vtk-loading-fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// ---- Loading card (glassmorphism) ----
+.iimm-vtk-loading-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--iimm-vtk-loading-card-gap, var(--iimm-vtk-spacing-xl, 20px));
+  padding: var(--iimm-vtk-loading-card-padding, 32px 40px 28px);
+  background: var(--iimm-vtk-loading-card-bg);
+  border: 1px solid var(--iimm-vtk-loading-card-border-color);
+  border-radius: var(--iimm-vtk-loading-card-radius);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    var(--iimm-vtk-loading-card-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+// ---- Ring progress container ----
+.iimm-vtk-loading-ring-wrapper {
+  position: relative;
+  width: var(--iimm-vtk-loading-ring-size, 88px);
+  height: var(--iimm-vtk-loading-ring-size, 88px);
+}
+
+// ---- Outer orbit ring ----
+.iimm-vtk-loading-ring-orbit {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: rgba(96, 165, 250, 0.25);
+  border-right-color: rgba(52, 211, 153, 0.15);
+  animation: iimm-vtk-ring-orbit 2.4s linear infinite;
+}
+
+@keyframes iimm-vtk-ring-orbit {
+  to { transform: rotate(360deg); }
+}
+
+// ---- SVG ring progress ----
+.iimm-vtk-loading-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.iimm-vtk-loading-ring-bg {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.iimm-vtk-loading-ring-fg {
+  transition: stroke-dashoffset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ---- Center spinner ----
+.iimm-vtk-loading-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iimm-vtk-loading-spinner {
+  width: var(--iimm-vtk-loading-spinner-size, 18px);
+  height: var(--iimm-vtk-loading-spinner-size, 18px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--iimm-vtk-loading-text-color, #fff);
+  border-radius: var(--iimm-vtk-radius-full, 50%);
+  animation: iimm-vtk-spinner-rotate 0.9s linear infinite;
+}
+
+@keyframes iimm-vtk-spinner-rotate {
+  to { transform: rotate(360deg); }
+}
+
+// ---- File size info ----
+.iimm-vtk-loading-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iimm-vtk-loading-info-text {
+  color: var(--iimm-vtk-loading-text-secondary);
+  font-size: var(--iimm-vtk-loading-info-font-size, var(--iimm-vtk-text-sm, 11px));
+  opacity: 0.7;
+  letter-spacing: 0.1px;
+}
+
+// ---- Stage label ----
+.iimm-vtk-loading-stage {
+  display: flex;
+  align-items: center;
+  color: var(--iimm-vtk-loading-text-secondary);
+  font-size: var(--iimm-vtk-loading-stage-font-size, var(--iimm-vtk-text-lg, 13px));
+  letter-spacing: 0.2px;
+  line-height: 1;
+}
+
+.iimm-vtk-loading-stage-label {
+  font-weight: var(--iimm-vtk-font-medium, 500);
+}
+
+// ---- Bouncing dots ----
+.iimm-vtk-loading-dots {
+  span {
+    opacity: 0;
+    animation: iimm-vtk-dot-blink 1.4s infinite;
+    font-weight: var(--iimm-vtk-font-bold, 700);
+    margin-left: 1px;
+
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.4s; }
+  }
+}
+
+@keyframes iimm-vtk-dot-blink {
+  0%, 20% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+// ---- Linear progress bar ----
+.iimm-vtk-loading-bar {
+  width: var(--iimm-vtk-loading-bar-width, 160px);
+  height: var(--iimm-vtk-loading-bar-height, 3px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.iimm-vtk-loading-bar-fill {
+  height: 100%;
+  background: var(--iimm-vtk-loading-progress-gradient);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.35);
+}
+
+// ---- Indeterminate progress bar (pure CSS, compositor thread, not blocked by JS) ----
+// 用于解析/渲染阶段，进度条无法通过 JS 更新时，使用纯 CSS 动画提供视觉反馈
+// ::after 伪元素在合成线程运行，不受 JS 阻塞影响
+.iimm-vtk-loading-bar--indeterminate {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  width: 100%;
+
+  // 动画条纹移动效果
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--iimm-vtk-loading-progress-gradient);
+    border-radius: 2px;
+    animation: iimm-vtk-loading-indeterminate 1.8s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.35);
+  }
+}
+
+@keyframes iimm-vtk-loading-indeterminate {
+  0% {
+    left: -50%;
+    width: 50%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    left: 100%;
+    width: 50%;
+  }
+}
+
+// ---- Busy state: CSS-only animations during CPU-intensive parsing ----
+// These run on the compositor thread and are NOT blocked by synchronous JS
+.iimm-vtk-loading--busy {
+  // Pulse the progress ring glow
+  .iimm-vtk-loading-ring-fg {
+    animation: iimm-vtk-ring-pulse 1.5s ease-in-out infinite;
+  }
+
+  // Pulse the spinner (combined with default rotation)
+  .iimm-vtk-loading-spinner {
+    animation: iimm-vtk-spinner-rotate-pulse 1.5s ease-in-out infinite;
+  }
+
+  // 解析阶段用不确定进度条替代数值进度条
+  // transition 会阻塞动画过渡效果，在 busy 时禁用
+  .iimm-vtk-loading-bar-fill {
+    transition: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  // 不确定进度条覆盖数值进度条样式
+  .iimm-vtk-loading-bar--indeterminate {
+    background: transparent;
+  }
+}
+
+@keyframes iimm-vtk-ring-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes iimm-vtk-bar-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(96, 165, 250, 0.35); }
+  50% { opacity: 0.5; box-shadow: 0 0 20px rgba(96, 165, 250, 0.6); }
+}
+
+@keyframes iimm-vtk-spinner-rotate-pulse {
+  0% { transform: rotate(0deg); opacity: 1; }
+  50% { transform: rotate(540deg); opacity: 0.4; }
+  100% { transform: rotate(1080deg); opacity: 1; }
+}
+
+// ---- Error overlay ----
+.iimm-vtk-error,
+.iimm-vtk-error-overlay {
+  background: var(--iimm-vtk-error-overlay-bg, rgba(0, 0, 0, 0.45));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+.iimm-vtk-error-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--iimm-vtk-error-card-gap, var(--iimm-vtk-spacing-lg, 12px));
+  padding: var(--iimm-vtk-error-card-padding, 24px 32px);
+  background: var(--iimm-vtk-error-bg);
+  border: 1px solid var(--iimm-vtk-error-border-color);
+  border-radius: var(--iimm-vtk-error-card-radius, 12px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  max-width: var(--iimm-vtk-error-card-max-width, 400px);
+  text-align: center;
+}
+
+.iimm-vtk-error-icon {
+  width: var(--iimm-vtk-error-icon-size, 32px);
+  height: var(--iimm-vtk-error-icon-size, 32px);
+  color: var(--iimm-vtk-error-color);
+}
+
+.iimm-vtk-error-message {
+  color: var(--iimm-vtk-error-color);
+  font-size: var(--iimm-vtk-error-message-font-size, var(--iimm-vtk-text-lg, 13px));
+  line-height: var(--iimm-vtk-leading-normal, 1.5);
+  word-break: break-word;
+}
+
+.iimm-vtk-error-actions {
+  display: flex;
+  gap: var(--iimm-vtk-spacing-base, 8px);
+  margin-top: var(--iimm-vtk-spacing-xs, 4px);
+}

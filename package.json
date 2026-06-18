@@ -1,0 +1,89 @@
+{
+  "name": "vtkviewer-vue",
+  "version": "0.1.2",
+  "author": "iimm <liudichen@foxmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "description": "Vue 3 component for VTK.js 3D visualization",
+  "main": "./lib/vtkviewer.umd.cjs",
+  "module": "./lib/vtkviewer.js",
+  "types": "./lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/vtkviewer.js",
+      "require": "./lib/vtkviewer.umd.cjs"
+    },
+    "./styles": {
+      "import": "./lib/vtkviewer.css",
+      "require": "./lib/vtkviewer.css"
+    },
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "url": "https://github.com/liudichen/vtkviewer-vue.git",
+    "type": "https"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build:tsc": "vue-tsc -b && vite build",
+    "build": "vite build",
+    "build:lib": "vite build --config vite.library.config.ts",
+    "build:all": "pnpm build && pnpm build:lib",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts,.vue",
+    "format": "prettier --write src/**/*.{ts,vue}",
+    "download-datasets": "npx ts-node scripts/download-datasets.ts"
+  },
+  "files": [
+    "lib"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "keywords": [
+    "vue",
+    "vue3",
+    "vtk",
+    "vtk.js",
+    "3d-viewer",
+    "visualization",
+    "medical-imaging",
+    "webgl",
+    "scientific-visualization"
+  ],
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@kitware/vtk.js": "^36.2.0",
+    "events": "^3.3.0",
+    "fflate": "^0.8.3"
+  },
+  "devDependencies": {
+    "@iconify/vue": "^5.0.1",
+    "@types/node": "^24.13.2",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-vue": "^9.33.0",
+    "prettier": "^3.8.4",
+    "rollup-plugin-visualizer": "^7.0.1",
+    "sass": "^1.101.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.16",
+    "vite-plugin-dts": "^5.0.2",
+    "vue": "^3.5.38",
+    "vue-tsc": "^3.3.5"
+  }
+}

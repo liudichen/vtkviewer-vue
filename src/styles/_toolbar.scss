@@ -1,0 +1,179 @@
+// ============================================================
+// IIMM VTK Viewer - Toolbar Styles
+// Main toolbar, buttons, groups, separators
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Toolbar container ----
+.iimm-vtk-toolbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--iimm-vtk-toolbar-gap);
+  padding: var(--iimm-vtk-toolbar-padding);
+  background: var(--iimm-vtk-toolbar-bg);
+  border-bottom: 1px solid var(--iimm-vtk-toolbar-border-color);
+  border-radius: var(--iimm-vtk-toolbar-radius);
+  @include iimm-vtk-glass-effect;
+  font-family: var(--iimm-vtk-font-family);
+  z-index: var(--iimm-vtk-z-toolbar);
+  user-select: none;
+
+  // Responsive
+  @include iimm-vtk-breakpoint-xs {
+    padding: 4px;
+    gap: 2px;
+  }
+
+  @include iimm-vtk-breakpoint-sm {
+    padding: 4px;
+    gap: 2px;
+  }
+
+  @include iimm-vtk-breakpoint-md {
+    padding: 6px;
+    gap: 3px;
+  }
+}
+
+// ---- Toolbar group ----
+.iimm-vtk-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+// ---- Toolbar plugin item (relative wrapper for button + panel) ----
+.iimm-vtk-toolbar-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  // Override width: 100% from popup-input mixin when used in toolbar context
+  select,
+  .iimm-vtk-view-select,
+  .iimm-vtk-popup-select {
+    width: auto;
+    min-width: 80px;
+  }
+}
+
+// ---- Toolbar separator ----
+.iimm-vtk-toolbar-separator {
+  width: var(--iimm-vtk-toolbar-separator-size);
+  height: var(--iimm-vtk-toolbar-separator-height, 20px);
+  margin: var(--iimm-vtk-toolbar-separator-margin, 0 4px);
+  background: var(--iimm-vtk-toolbar-separator-color);
+  border-radius: 1px;
+  flex-shrink: 0;
+
+  @include iimm-vtk-breakpoint-xs {
+    height: 16px;
+    margin: 0 2px;
+  }
+
+  @include iimm-vtk-breakpoint-sm {
+    height: 16px;
+    margin: 0 2px;
+  }
+}
+
+// ---- Toolbar button (base) ----
+.iimm-vtk-toolbar-btn {
+  @include iimm-vtk-button-reset;
+  width: var(--iimm-vtk-btn-size);
+  height: var(--iimm-vtk-btn-size);
+  border: 1px solid var(--iimm-vtk-btn-border-color);
+  border-radius: var(--iimm-vtk-btn-radius);
+  background: var(--iimm-vtk-btn-bg);
+  color: var(--iimm-vtk-btn-color);
+  transition: var(--iimm-vtk-btn-transition);
+  flex-shrink: 0;
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+    border-color: var(--iimm-vtk-btn-border-color-hover);
+    color: var(--iimm-vtk-btn-color-hover);
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--iimm-vtk-btn-color-active);
+    outline-offset: 2px;
+  }
+
+  // Active state (for toggle buttons)
+  &.is-active {
+    background: var(--iimm-vtk-btn-bg-active);
+    border-color: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-btn-color-active);
+  }
+
+  // Disabled state
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// ---- Toolbar icon ----
+.iimm-vtk-toolbar-icon {
+  width: var(--iimm-vtk-icon-size);
+  height: var(--iimm-vtk-icon-size);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // SVG icon styling
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  // Iconify icon styling
+  [data-icon] {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// ---- Toolbar icon (emoji/text fallback) ----
+.iimm-vtk-toolbar-icon-text {
+  font-size: var(--iimm-vtk-icon-size);
+  line-height: 1;
+}
+
+// ---- State-specific button variants ----
+.iimm-vtk-toolbar-btn--saved {
+  background: rgba(100, 255, 218, 0.15) !important;
+  border-color: rgba(100, 255, 218, 0.4) !important;
+  color: var(--iimm-vtk-color-accent, #64ffda) !important;
+}
+
+.iimm-vtk-toolbar-btn--restored {
+  background: rgba(96, 165, 250, 0.15) !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+  color: #60a5fa !important;
+}
+
+.iimm-vtk-toolbar-btn--danger {
+  &:hover {
+    background: rgba(239, 68, 68, 0.2) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
+    color: var(--iimm-vtk-color-error, #ef4444) !important;
+  }
+}
+
+// ---- Toolbar wrapper (in VtkViewer.vue) ----
+.iimm-vtk-toolbar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}

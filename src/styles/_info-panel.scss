@@ -1,0 +1,64 @@
+// ============================================================
+// IIMM VTK Viewer - Info Panel Styles
+// Information display panel below toolbar
+// NOTE: Class names and CSS vars are intentionally distinct
+//       from main toolbar to allow independent customization
+// ============================================================
+
+@use 'mixins' as *;
+
+// ---- Info panel container ----
+.iimm-vtk-info-panel {
+  position: relative;
+  display: none; // hidden by default, shown via :has() when content exists
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--iimm-vtk-info-panel-gap-y) var(--iimm-vtk-info-panel-gap-x);
+  padding: var(--iimm-vtk-info-panel-padding);
+  background: var(--iimm-vtk-info-panel-bg);
+  border-bottom: 1px solid var(--iimm-vtk-toolbar-border-color);
+  border-radius: var(--iimm-vtk-info-panel-radius);
+  @include iimm-vtk-glass-effect;
+  max-height: var(--iimm-vtk-info-panel-max-height);
+  overflow-y: auto;
+  font-family: var(--iimm-vtk-font-family);
+  font-size: var(--iimm-vtk-info-panel-font-size);
+  @include iimm-vtk-custom-scrollbar;
+  user-select: none;
+
+  // Auto-show when content exists
+  &:has(.iimm-vtk-info-item) {
+    display: flex;
+    flex-direction: var(--iimm-vtk-info-panel-flex-direction, row);
+  }
+}
+
+// ---- Info item (label + value pair) ----
+.iimm-vtk-info-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--iimm-vtk-info-panel-item-inner-gap, 5px);
+  line-height: var(--iimm-vtk-leading-normal, 1.4);
+  flex-wrap: wrap;
+}
+
+// ---- Info label ----
+.iimm-vtk-info-label {
+  color: var(--iimm-vtk-info-panel-label-color);
+  font-size: var(--iimm-vtk-info-panel-font-size);
+  letter-spacing: var(--iimm-vtk-tracking-tight, 0.3px);
+}
+
+// ---- Info value ----
+.iimm-vtk-info-value {
+  color: var(--iimm-vtk-info-panel-value-color);
+  font-size: var(--iimm-vtk-info-panel-font-size);
+  font-family: var(--iimm-vtk-font-mono);
+  font-weight: var(--iimm-vtk-font-medium, 500);
+}
+
+// ---- Info value with custom color (e.g., pick point colors) ----
+.iimm-vtk-info-value--colored {
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+}

@@ -1,0 +1,212 @@
+// ============================================================
+// IIMM VTK Viewer - Load Model Dropdown Styles
+// Dropdown popover for loading models from local file / remote URL
+// Uses existing --iimm-vtk-popup-* variables for theme consistency
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ---- Load model container ----
+.iimm-vtk-load-model {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+// ---- Load model dropdown panel ----
+.iimm-vtk-load-model-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: var(--iimm-vtk-z-popup);
+  min-width: 260px;
+  max-width: 360px;
+  padding: var(--iimm-vtk-spacing-base, 8px) var(--iimm-vtk-spacing-lg, 10px);
+  background: var(--iimm-vtk-popup-bg);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: var(--iimm-vtk-radius-xl, 10px);
+  box-shadow: var(--iimm-vtk-popup-shadow);
+  color: var(--iimm-vtk-popup-color);
+  font-size: var(--iimm-vtk-popup-font-size);
+  font-family: var(--iimm-vtk-font-family);
+  user-select: none;
+  animation: iimm-vtk-load-model-in var(--iimm-vtk-transition-fast, 0.15s) ease;
+  transform-origin: top right;
+
+  @media (max-width: 600px) {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+}
+
+@keyframes iimm-vtk-load-model-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ---- Tab bar ----
+.iimm-vtk-load-model-tabs {
+  display: flex;
+  gap: var(--iimm-vtk-spacing-xs, 4px);
+  margin-bottom: var(--iimm-vtk-spacing-lg, 10px);
+  padding-bottom: var(--iimm-vtk-spacing-base, 8px);
+  border-bottom: 1px solid var(--iimm-vtk-popup-border-color);
+}
+
+.iimm-vtk-load-model-tab {
+  @include iimm-vtk-button-reset;
+  flex: 1;
+  padding: var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  font-weight: var(--iimm-vtk-font-medium, 500);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: var(--iimm-vtk-radius-base, 6px);
+  background: var(--iimm-vtk-input-bg, rgba(0, 0, 0, 0.15));
+  color: var(--iimm-vtk-popup-color);
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast, 0.15s ease);
+  opacity: 0.7;
+
+  &:hover:not(:disabled) {
+    background: var(--iimm-vtk-btn-bg-hover);
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  &.is-active {
+    background: var(--iimm-vtk-btn-bg-active);
+    border-color: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-btn-color-active);
+    opacity: 1;
+  }
+}
+
+// ---- Section ----
+.iimm-vtk-load-model-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iimm-vtk-spacing-base, 8px);
+}
+
+.iimm-vtk-load-model-label {
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  color: var(--iimm-vtk-popup-label-color);
+  letter-spacing: var(--iimm-vtk-tracking-tight, 0.3px);
+}
+
+// ---- Action button ----
+.iimm-vtk-load-model-action-btn {
+  @include iimm-vtk-button-reset;
+  width: 100%;
+  padding: var(--iimm-vtk-spacing-base, 8px) var(--iimm-vtk-spacing-lg, 12px);
+  font-size: var(--iimm-vtk-text-base, 12px);
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+  border: 1px solid var(--iimm-vtk-btn-color-active);
+  border-radius: var(--iimm-vtk-radius-base, 6px);
+  background: var(--iimm-vtk-btn-bg-active);
+  color: var(--iimm-vtk-btn-color-active);
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast, 0.15s ease);
+  letter-spacing: var(--iimm-vtk-tracking-tight, 0.3px);
+
+  &:hover:not(:disabled) {
+    background: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-popup-bg);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// ---- URL input ----
+.iimm-vtk-load-model-url-input {
+  @include iimm-vtk-button-reset;
+  width: 100%;
+  padding: var(--iimm-vtk-input-padding);
+  font-size: var(--iimm-vtk-input-font-size);
+  border: 1px solid var(--iimm-vtk-input-border-color);
+  border-radius: var(--iimm-vtk-input-radius);
+  background: var(--iimm-vtk-input-bg);
+  color: var(--iimm-vtk-input-color);
+  font-family: var(--iimm-vtk-font-mono);
+  transition: border-color var(--iimm-vtk-transition-fast, 0.15s ease);
+  text-align: left;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: var(--iimm-vtk-input-border-color-focus);
+  }
+
+  &::placeholder {
+    color: var(--iimm-vtk-color-text-disabled);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+// ---- Hint ----
+.iimm-vtk-load-model-hint {
+  font-size: var(--iimm-vtk-text-xs, 9px);
+  color: var(--iimm-vtk-popup-label-color);
+  opacity: 0.7;
+  text-align: center;
+  line-height: var(--iimm-vtk-leading-relaxed, 1.6);
+}
+
+// ---- Toast (status message) ----
+.iimm-vtk-load-model-toast {
+  margin-top: var(--iimm-vtk-spacing-sm, 6px);
+  padding: var(--iimm-vtk-spacing-xs, 4px) var(--iimm-vtk-spacing-base, 8px);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  border-radius: var(--iimm-vtk-radius-sm, 4px);
+  text-align: center;
+  animation: iimm-vtk-load-model-toast-in var(--iimm-vtk-transition-fast, 0.15s) ease;
+
+  &.is-success {
+    background: rgba(100, 255, 218, 0.12);
+    color: var(--iimm-vtk-color-accent, #64ffda);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+  }
+
+  &.is-error {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--iimm-vtk-color-error, #ef4444);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  &.is-info {
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--iimm-vtk-color-info, #60a5fa);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+  }
+}
+
+@keyframes iimm-vtk-load-model-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,296 @@
+// ============================================================
+// IIMM VTK Viewer - Screenshot Dropdown Styles
+// Dropdown popover for screenshot/high-resolution export
+// Uses existing --iimm-vtk-popup-* variables for theme consistency
+// ============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ---- Screenshot container ----
+.iimm-vtk-screenshot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+// ---- Screenshot dropdown panel ----
+.iimm-vtk-screenshot-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: var(--iimm-vtk-z-popup);
+  min-width: 240px;
+  max-width: 300px;
+  padding: 8px 10px;
+  background: var(--iimm-vtk-popup-bg);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: 10px;
+  box-shadow: var(--iimm-vtk-popup-shadow);
+  color: var(--iimm-vtk-popup-color);
+  font-size: var(--iimm-vtk-popup-font-size);
+  font-family: var(--iimm-vtk-font-family);
+  user-select: none;
+  animation: iimm-vtk-screenshot-in 0.2s ease;
+  transform-origin: top right;
+
+  @media (max-width: 600px) {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+}
+
+@keyframes iimm-vtk-screenshot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ---- Header ----
+// ---- Section ----
+.iimm-vtk-screenshot-section {
+  margin-bottom: var(--iimm-vtk-spacing-sm, 6px);
+}
+
+.iimm-vtk-screenshot-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  color: var(--iimm-vtk-popup-label-color);
+  margin-bottom: var(--iimm-vtk-spacing-xs, 4px);
+  letter-spacing: 0.2px;
+}
+
+.iimm-vtk-screenshot-value {
+  font-family: var(--iimm-vtk-font-mono, 'Consolas', monospace);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  color: var(--iimm-vtk-popup-color);
+  opacity: 0.75;
+}
+
+// ---- Option buttons (multiplier, format) ----
+.iimm-vtk-screenshot-options {
+  display: flex;
+  gap: var(--iimm-vtk-spacing-xs, 4px);
+}
+
+.iimm-vtk-screenshot-opt-btn {
+  @include iimm-vtk-button-reset;
+  flex: 1;
+  padding: 5px var(--iimm-vtk-spacing-base, 8px);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: var(--iimm-vtk-radius-sm, 5px);
+  background: var(--iimm-vtk-input-bg, rgba(0, 0, 0, 0.15));
+  color: var(--iimm-vtk-popup-color);
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast, 0.15s ease);
+  white-space: nowrap;
+  opacity: 0.7;
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+    color: var(--iimm-vtk-btn-color-hover);
+    opacity: 1;
+  }
+
+  &.is-selected {
+    background: var(--iimm-vtk-btn-bg-active);
+    border-color: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-btn-color-active);
+    opacity: 1;
+  }
+}
+
+// ---- Slider (quality) ----
+.iimm-vtk-screenshot-slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--iimm-vtk-slider-track-bg, rgba(255, 255, 255, 0.1));
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--iimm-vtk-slider-thumb-bg, #64ffda);
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.15s;
+  }
+
+  &::-webkit-slider-thumb:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--iimm-vtk-slider-thumb-bg, #64ffda);
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+// ---- Toggle row (transparent background) ----
+.iimm-vtk-screenshot-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+
+  .iimm-vtk-screenshot-label {
+    margin-bottom: 0;
+  }
+}
+
+// Toggle switch
+.iimm-vtk-screenshot-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .iimm-vtk-screenshot-slider-round {
+      background: var(--iimm-vtk-input-border-color-focus, #64ffda);
+    }
+
+    &:checked + .iimm-vtk-screenshot-slider-round::before {
+      transform: translateX(16px);
+    }
+  }
+}
+
+.iimm-vtk-screenshot-slider-round {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--iimm-vtk-slider-track-bg, rgba(255, 255, 255, 0.1));
+  border-radius: 20px;
+  transition: background 0.2s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    bottom: 2px;
+    background: var(--iimm-vtk-color-toggle-knob, #ffffff);
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ---- Divider ----
+.iimm-vtk-screenshot-divider {
+  height: 1px;
+  background: var(--iimm-vtk-popup-border-color);
+  margin: 6px 0;
+}
+
+// ---- Export button ----
+.iimm-vtk-screenshot-export-btn {
+  @include iimm-vtk-button-reset;
+  width: 100%;
+  padding: var(--iimm-vtk-spacing-base, 8px) var(--iimm-vtk-spacing-lg, 12px);
+  font-size: var(--iimm-vtk-text-base, 12px);
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+  border: 1px solid var(--iimm-vtk-btn-color-active);
+  border-radius: var(--iimm-vtk-radius-base, 6px);
+  background: var(--iimm-vtk-btn-bg-active);
+  color: var(--iimm-vtk-btn-color-active);
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast, 0.15s ease);
+  letter-spacing: var(--iimm-vtk-tracking-tight, 0.3px);
+
+  &:hover:not(:disabled) {
+    background: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-popup-bg);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.is-loading {
+    animation: iimm-vtk-screenshot-pulse 1.2s ease infinite;
+  }
+
+  &.is-done {
+    background: rgba(52, 211, 153, 0.2);
+    border-color: rgba(52, 211, 153, 0.4);
+    color: var(--iimm-vtk-color-success, #34d399);
+  }
+
+  &.is-error {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: var(--iimm-vtk-color-error, #ef4444);
+  }
+}
+
+@keyframes iimm-vtk-screenshot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+// ---- Toast ----
+.iimm-vtk-screenshot-toast {
+  margin-top: var(--iimm-vtk-spacing-sm, 6px);
+  padding: 5px var(--iimm-vtk-spacing-base, 8px);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  border-radius: var(--iimm-vtk-radius-sm, 4px);
+  text-align: center;
+  animation: iimm-vtk-screenshot-toast-in var(--iimm-vtk-transition-fast, 0.15s) ease;
+
+  &.is-success {
+    background: rgba(100, 255, 218, 0.12);
+    color: var(--iimm-vtk-color-accent, #64ffda);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+  }
+
+  &.is-error {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--iimm-vtk-color-error, #ef4444);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  &.is-info {
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--iimm-vtk-color-info, #60a5fa);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+  }
+}
+
+@keyframes iimm-vtk-screenshot-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

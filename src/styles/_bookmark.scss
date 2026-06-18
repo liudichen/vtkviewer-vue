@@ -1,0 +1,302 @@
+// ============================================================
+// IIMM VTK Viewer - Bookmark Dropdown Styles
+// Dropdown popover for bookmark/angle management
+// ============================================================
+
+@use 'mixins' as *;
+
+// ============================================================
+// Container (positioned relative for dropdown)
+// ============================================================
+.iimm-vtk-bookmark {
+  position: relative;
+}
+
+// ============================================================
+// Badge on toolbar button
+// ============================================================
+.iimm-vtk-bookmark-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 var(--iimm-vtk-spacing-xs, 4px);
+  background: linear-gradient(135deg, var(--iimm-vtk-color-accent, #64ffda), #00bfa5);
+  color: var(--iimm-vtk-color-text-inverse, #1a1a2e);
+  border-radius: var(--iimm-vtk-radius-lg, 8px);
+  font-size: var(--iimm-vtk-text-xs, 9px);
+  font-weight: var(--iimm-vtk-font-bold, 700);
+  line-height: 15px;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 0 4px rgba(100, 255, 218, 0.5);
+}
+
+// ============================================================
+// Dropdown panel
+// ============================================================
+.iimm-vtk-bookmark-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: var(--iimm-vtk-z-popup);
+  min-width: 260px;
+  max-width: 320px;
+  padding: 8px;
+  background: var(--iimm-vtk-popup-bg);
+  border: 1px solid var(--iimm-vtk-popup-border-color);
+  border-radius: 10px;
+  box-shadow: var(--iimm-vtk-popup-shadow);
+  color: var(--iimm-vtk-popup-color);
+  font-size: var(--iimm-vtk-popup-font-size);
+  font-family: var(--iimm-vtk-font-family);
+  user-select: none;
+  animation: iimm-vtk-bookmark-in 0.2s ease;
+  transform-origin: top right;
+}
+
+@keyframes iimm-vtk-bookmark-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ============================================================
+// Header
+// ============================================================
+.iimm-vtk-bookmark-count {
+  font-size: var(--iimm-vtk-text-xxs, 10px);
+  font-weight: var(--iimm-vtk-font-semibold, 600);
+  color: var(--iimm-vtk-btn-color-active);
+  background: var(--iimm-vtk-btn-bg-active);
+  padding: 0 var(--iimm-vtk-spacing-sm, 6px);
+  height: 16px;
+  line-height: 16px;
+  border-radius: 8px;
+  min-width: 16px;
+  text-align: center;
+}
+
+// ---- Clear all button ----
+.iimm-vtk-bookmark-clear-btn {
+  @include iimm-vtk-button-reset;
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--iimm-vtk-popup-label-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all var(--iimm-vtk-transition-fast);
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--iimm-vtk-color-error, #ef4444);
+    background: rgba(239, 68, 68, 0.12);
+  }
+}
+
+// ============================================================
+// Add section
+// ============================================================
+.iimm-vtk-bookmark-add {
+  display: flex;
+  gap: var(--iimm-vtk-spacing-sm, 6px);
+  align-items: center;
+  margin-bottom: var(--iimm-vtk-spacing-sm, 6px);
+}
+
+.iimm-vtk-bookmark-input {
+  flex: 1;
+  @include iimm-vtk-popup-input;
+  height: 30px;
+  padding: 0 var(--iimm-vtk-spacing-base, 8px);
+  font-size: var(--iimm-vtk-text-base, 12px);
+}
+
+.iimm-vtk-bookmark-save-btn {
+  @include iimm-vtk-button-reset;
+  display: flex;
+  align-items: center;
+  gap: var(--iimm-vtk-spacing-xs, 4px);
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--iimm-vtk-btn-color-active);
+  border-radius: var(--iimm-vtk-radius-base, 6px);
+  background: var(--iimm-vtk-btn-bg-active);
+  color: var(--iimm-vtk-btn-color-active);
+  font-size: var(--iimm-vtk-text-base, 12px);
+  font-weight: var(--iimm-vtk-font-normal, 400);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast);
+  flex-shrink: 0;
+
+  &:hover {
+    background: var(--iimm-vtk-btn-color-active);
+    color: var(--iimm-vtk-popup-bg);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.iimm-vtk-bookmark-save-icon {
+  font-size: 15px;
+  font-weight: var(--iimm-vtk-font-bold, 700);
+  line-height: 1;
+}
+
+// ============================================================
+// Feedback toast
+// ============================================================
+.iimm-vtk-bookmark-toast {
+  padding: 5px 10px;
+  border-radius: var(--iimm-vtk-radius-base, 6px);
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  text-align: center;
+  margin-bottom: var(--iimm-vtk-spacing-sm, 6px);
+  animation: iimm-vtk-bookmark-toast-in 0.15s ease;
+
+  &.is-success {
+    background: rgba(100, 255, 218, 0.12);
+    color: var(--iimm-vtk-color-accent, #64ffda);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+  }
+
+  &.is-error {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--iimm-vtk-color-error, #ef4444);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+}
+
+@keyframes iimm-vtk-bookmark-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================================
+// Divider
+// ============================================================
+.iimm-vtk-bookmark-divider {
+  height: 1px;
+  background: var(--iimm-vtk-popup-border-color);
+  margin: 4px 0;
+}
+
+// ============================================================
+// Bookmark list
+// ============================================================
+.iimm-vtk-bookmark-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 220px;
+  overflow-y: auto;
+  @include iimm-vtk-custom-scrollbar(rgba(255, 255, 255, 0.15));
+}
+
+// ============================================================
+// Empty state
+// ============================================================
+.iimm-vtk-bookmark-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 0;
+}
+
+.iimm-vtk-bookmark-empty-icon {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.iimm-vtk-bookmark-empty-text {
+  font-size: var(--iimm-vtk-text-sm, 11px);
+  color: var(--iimm-vtk-popup-label-color);
+  text-align: center;
+}
+
+// ============================================================
+// Bookmark item
+// ============================================================
+.iimm-vtk-bookmark-item {
+  display: flex;
+  align-items: center;
+  gap: var(--iimm-vtk-spacing-base, 8px);
+  padding: 7px var(--iimm-vtk-spacing-base, 8px);
+  border-radius: var(--iimm-vtk-radius-base, 6px);
+  cursor: pointer;
+  transition: all var(--iimm-vtk-transition-fast);
+
+  &:hover {
+    background: var(--iimm-vtk-btn-bg-hover);
+
+    .iimm-vtk-bookmark-item-delete {
+      opacity: 0.5;
+      pointer-events: auto;
+    }
+  }
+
+  // Active press
+  &:active {
+    background: var(--iimm-vtk-btn-bg-active);
+    transform: scale(0.98);
+  }
+}
+
+.iimm-vtk-bookmark-item-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.iimm-vtk-bookmark-item-name {
+  flex: 1;
+  font-size: var(--iimm-vtk-text-base, 12px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--iimm-vtk-popup-color);
+}
+
+// ----------------------------------------------------------
+// Delete button (hidden by default, visible on hover)
+// ----------------------------------------------------------
+.iimm-vtk-bookmark-item-delete {
+  @include iimm-vtk-button-reset;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--iimm-vtk-btn-color);
+  opacity: 0;
+  pointer-events: none;
+  flex-shrink: 0;
+  transition: all var(--iimm-vtk-transition-fast);
+
+  &:hover {
+    opacity: 1 !important;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--iimm-vtk-color-error, #ef4444);
+  }
+}

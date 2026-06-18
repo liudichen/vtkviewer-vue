@@ -1,0 +1,356 @@
+// ============================================================
+// IIMM VTK Viewer - Theme System
+// Built-in light & dark themes
+// ============================================================
+
+// ---- Dark Theme ----
+.iimm-vtk-theme-dark {
+  // Toolbar
+  --iimm-vtk-toolbar-bg: rgba(40, 40, 55, 0.85);
+  --iimm-vtk-toolbar-border-color: rgba(255, 255, 255, 0.08);
+
+  // Button
+  --iimm-vtk-btn-bg: rgba(255, 255, 255, 0.06);
+  --iimm-vtk-btn-bg-hover: rgba(255, 255, 255, 0.12);
+  --iimm-vtk-btn-bg-active: rgba(100, 255, 218, 0.18);
+  --iimm-vtk-btn-color: #c8c8d0;
+  --iimm-vtk-btn-color-hover: #ffffff;
+  --iimm-vtk-btn-color-active: #64ffda;
+
+  // Separator
+  --iimm-vtk-toolbar-separator-color: rgba(255, 255, 255, 0.12);
+
+  // Extension
+  --iimm-vtk-extension-bg: rgba(40, 40, 55, 0.85);
+  --iimm-vtk-extension-separator-color: rgba(255, 255, 255, 0.12);
+
+  // Info Panel
+  --iimm-vtk-info-panel-bg: rgba(40, 40, 55, 0.85);
+  --iimm-vtk-info-panel-label-color: rgba(255, 255, 255, 0.5);
+  --iimm-vtk-info-panel-value-color: rgba(255, 255, 255, 0.9);
+
+  // Popup
+  --iimm-vtk-popup-bg: #1e1e2e;
+  --iimm-vtk-popup-bg-secondary: #16162a;
+  --iimm-vtk-popup-border-color: rgba(255, 255, 255, 0.08);
+  --iimm-vtk-popup-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --iimm-vtk-popup-color: #c8c8d0;
+  --iimm-vtk-popup-label-color: rgba(255, 255, 255, 0.5);
+
+  // Input
+  --iimm-vtk-input-bg: rgba(0, 0, 0, 0.35);
+  --iimm-vtk-input-border-color: rgba(255, 255, 255, 0.08);
+  --iimm-vtk-input-color: #c8c8d0;
+
+  // Slider
+  --iimm-vtk-slider-track-bg: rgba(255, 255, 255, 0.08);
+
+  // Loading
+  --iimm-vtk-loading-bg: rgba(0, 0, 0, 0.65);
+  --iimm-vtk-loading-card-bg: rgba(255, 255, 255, 0.05);
+  --iimm-vtk-loading-card-border-color: rgba(255, 255, 255, 0.08);
+
+  // Error
+  --iimm-vtk-error-overlay-bg: rgba(0, 0, 0, 0.55);
+
+  // Extra Toggle
+  --iimm-vtk-extra-toggle-bg: rgba(40, 40, 55, 0.9);
+  --iimm-vtk-extra-toggle-bg-hover: rgba(50, 50, 70, 0.95);
+  --iimm-vtk-extra-toggle-border-color: rgba(255, 255, 255, 0.08);
+  --iimm-vtk-extra-toggle-color: rgba(255, 255, 255, 0.7);
+  --iimm-vtk-extra-toggle-color-hover: rgba(255, 255, 255, 0.95);
+
+  // Portal
+  --iimm-vtk-portal-panel-bg: #1e1e2e;
+  --iimm-vtk-portal-panel-border-color: rgba(255, 255, 255, 0.08);
+  --iimm-vtk-portal-notification-bg: #1e1e2e;
+}
+
+// ---- Ocean Theme ----
+.iimm-vtk-theme-ocean {
+  // Toolbar
+  --iimm-vtk-toolbar-bg: rgba(20, 40, 60, 0.9);
+  --iimm-vtk-toolbar-border-color: rgba(100, 200, 255, 0.15);
+
+  // Button
+  --iimm-vtk-btn-bg: rgba(100, 200, 255, 0.08);
+  --iimm-vtk-btn-bg-hover: rgba(100, 200, 255, 0.15);
+  --iimm-vtk-btn-bg-active: rgba(100, 200, 255, 0.25);
+  --iimm-vtk-btn-color: #8ec8e8;
+  --iimm-vtk-btn-color-hover: #b0e0ff;
+  --iimm-vtk-btn-color-active: #64c8ff;
+  --iimm-vtk-btn-border-color-hover: rgba(100, 200, 255, 0.25);
+
+  // Separator
+  --iimm-vtk-toolbar-separator-color: rgba(100, 200, 255, 0.15);
+
+  // Extension
+  --iimm-vtk-extension-bg: rgba(20, 40, 60, 0.9);
+  --iimm-vtk-extension-separator-color: rgba(100, 200, 255, 0.15);
+
+  // Info Panel
+  --iimm-vtk-info-panel-bg: rgba(20, 40, 60, 0.9);
+  --iimm-vtk-info-panel-label-color: rgba(100, 200, 255, 0.5);
+  --iimm-vtk-info-panel-value-color: rgba(100, 200, 255, 0.9);
+
+  // Popup
+  --iimm-vtk-popup-bg: #0a1929;
+  --iimm-vtk-popup-bg-secondary: #0d2137;
+  --iimm-vtk-popup-border-color: rgba(100, 200, 255, 0.12);
+  --iimm-vtk-popup-shadow: 0 8px 24px rgba(0, 20, 40, 0.5);
+  --iimm-vtk-popup-color: #8ec8e8;
+  --iimm-vtk-popup-label-color: rgba(100, 200, 255, 0.5);
+
+  // Input
+  --iimm-vtk-input-bg: rgba(0, 20, 40, 0.5);
+  --iimm-vtk-input-border-color: rgba(100, 200, 255, 0.12);
+  --iimm-vtk-input-border-color-focus: #64c8ff;
+  --iimm-vtk-input-color: #8ec8e8;
+
+  // Slider
+  --iimm-vtk-slider-track-bg: rgba(100, 200, 255, 0.12);
+  --iimm-vtk-slider-thumb-bg: #64c8ff;
+
+  // Loading
+  --iimm-vtk-loading-bg: rgba(10, 25, 41, 0.8);
+  --iimm-vtk-loading-card-bg: rgba(20, 50, 80, 0.6);
+  --iimm-vtk-loading-card-border-color: rgba(100, 200, 255, 0.12);
+  --iimm-vtk-loading-text-color: #b0e0ff;
+  --iimm-vtk-loading-text-secondary: rgba(100, 200, 255, 0.6);
+  --iimm-vtk-loading-progress-gradient: linear-gradient(90deg, #0077b6, #48cae4);
+
+  // Error
+  --iimm-vtk-error-bg: rgba(255, 100, 100, 0.15);
+  --iimm-vtk-error-border-color: rgba(255, 100, 100, 0.3);
+  --iimm-vtk-error-color: #ff6b6b;
+  --iimm-vtk-error-overlay-bg: rgba(10, 25, 41, 0.7);
+
+  // Extra Toggle
+  --iimm-vtk-extra-toggle-bg: rgba(20, 40, 60, 0.95);
+  --iimm-vtk-extra-toggle-bg-hover: rgba(30, 55, 80, 1);
+  --iimm-vtk-extra-toggle-border-color: rgba(100, 200, 255, 0.15);
+  --iimm-vtk-extra-toggle-color: rgba(255, 255, 255, 0.7);
+  --iimm-vtk-extra-toggle-color-hover: rgba(255, 255, 255, 0.95);
+
+  // Portal
+  --iimm-vtk-portal-panel-bg: #0a1929;
+  --iimm-vtk-portal-panel-border-color: rgba(100, 200, 255, 0.12);
+  --iimm-vtk-portal-notification-bg: #0a1929;
+}
+
+// ---- Forest Theme ----
+.iimm-vtk-theme-forest {
+  // Toolbar
+  --iimm-vtk-toolbar-bg: rgba(20, 40, 30, 0.9);
+  --iimm-vtk-toolbar-border-color: rgba(100, 200, 150, 0.15);
+
+  // Button
+  --iimm-vtk-btn-bg: rgba(100, 200, 150, 0.08);
+  --iimm-vtk-btn-bg-hover: rgba(100, 200, 150, 0.15);
+  --iimm-vtk-btn-bg-active: rgba(100, 255, 180, 0.25);
+  --iimm-vtk-btn-color: #8ec8a8;
+  --iimm-vtk-btn-color-hover: #b0e0c0;
+  --iimm-vtk-btn-color-active: #64ff96;
+  --iimm-vtk-btn-border-color-hover: rgba(100, 200, 150, 0.25);
+
+  // Separator
+  --iimm-vtk-toolbar-separator-color: rgba(100, 200, 150, 0.15);
+
+  // Extension
+  --iimm-vtk-extension-bg: rgba(20, 40, 30, 0.9);
+  --iimm-vtk-extension-separator-color: rgba(100, 200, 150, 0.15);
+
+  // Info Panel
+  --iimm-vtk-info-panel-bg: rgba(20, 40, 30, 0.9);
+  --iimm-vtk-info-panel-label-color: rgba(100, 200, 150, 0.5);
+  --iimm-vtk-info-panel-value-color: rgba(100, 200, 150, 0.9);
+
+  // Popup
+  --iimm-vtk-popup-bg: #0a1910;
+  --iimm-vtk-popup-bg-secondary: #0d2315;
+  --iimm-vtk-popup-border-color: rgba(100, 200, 150, 0.12);
+  --iimm-vtk-popup-shadow: 0 8px 24px rgba(0, 20, 15, 0.5);
+  --iimm-vtk-popup-color: #8ec8a8;
+  --iimm-vtk-popup-label-color: rgba(100, 200, 150, 0.5);
+
+  // Input
+  --iimm-vtk-input-bg: rgba(0, 20, 15, 0.5);
+  --iimm-vtk-input-border-color: rgba(100, 200, 150, 0.12);
+  --iimm-vtk-input-border-color-focus: #64ff96;
+  --iimm-vtk-input-color: #8ec8a8;
+
+  // Slider
+  --iimm-vtk-slider-track-bg: rgba(100, 200, 150, 0.12);
+  --iimm-vtk-slider-thumb-bg: #64ff96;
+
+  // Loading
+  --iimm-vtk-loading-bg: rgba(10, 25, 16, 0.8);
+  --iimm-vtk-loading-card-bg: rgba(20, 50, 35, 0.6);
+  --iimm-vtk-loading-card-border-color: rgba(100, 200, 150, 0.12);
+  --iimm-vtk-loading-text-color: #b0e0c0;
+  --iimm-vtk-loading-text-secondary: rgba(100, 200, 150, 0.6);
+  --iimm-vtk-loading-progress-gradient: linear-gradient(90deg, #2d6a4f, #52b788);
+
+  // Error
+  --iimm-vtk-error-bg: rgba(255, 100, 100, 0.15);
+  --iimm-vtk-error-border-color: rgba(255, 100, 100, 0.3);
+  --iimm-vtk-error-color: #ff6b6b;
+  --iimm-vtk-error-overlay-bg: rgba(10, 25, 16, 0.7);
+
+  // Extra Toggle
+  --iimm-vtk-extra-toggle-bg: rgba(20, 40, 30, 0.95);
+  --iimm-vtk-extra-toggle-bg-hover: rgba(30, 55, 40, 1);
+  --iimm-vtk-extra-toggle-border-color: rgba(100, 200, 150, 0.15);
+  --iimm-vtk-extra-toggle-color: rgba(255, 255, 255, 0.7);
+  --iimm-vtk-extra-toggle-color-hover: rgba(255, 255, 255, 0.95);
+
+  // Portal
+  --iimm-vtk-portal-panel-bg: #0a1910;
+  --iimm-vtk-portal-panel-border-color: rgba(100, 200, 150, 0.12);
+  --iimm-vtk-portal-notification-bg: #0a1910;
+}
+
+// ---- Sunset Theme ----
+.iimm-vtk-theme-sunset {
+  // Toolbar
+  --iimm-vtk-toolbar-bg: rgba(50, 30, 20, 0.9);
+  --iimm-vtk-toolbar-border-color: rgba(255, 150, 100, 0.15);
+
+  // Button
+  --iimm-vtk-btn-bg: rgba(255, 150, 100, 0.08);
+  --iimm-vtk-btn-bg-hover: rgba(255, 150, 100, 0.15);
+  --iimm-vtk-btn-bg-active: rgba(255, 180, 120, 0.25);
+  --iimm-vtk-btn-color: #e8a888;
+  --iimm-vtk-btn-color-hover: #ffc0a0;
+  --iimm-vtk-btn-color-active: #ff9060;
+  --iimm-vtk-btn-border-color-hover: rgba(255, 150, 100, 0.25);
+
+  // Separator
+  --iimm-vtk-toolbar-separator-color: rgba(255, 150, 100, 0.15);
+
+  // Extension
+  --iimm-vtk-extension-bg: rgba(50, 30, 20, 0.9);
+  --iimm-vtk-extension-separator-color: rgba(255, 150, 100, 0.15);
+
+  // Info Panel
+  --iimm-vtk-info-panel-bg: rgba(50, 30, 20, 0.9);
+  --iimm-vtk-info-panel-label-color: rgba(255, 150, 100, 0.5);
+  --iimm-vtk-info-panel-value-color: rgba(255, 150, 100, 0.9);
+
+  // Popup
+  --iimm-vtk-popup-bg: #1a0f0a;
+  --iimm-vtk-popup-bg-secondary: #231410;
+  --iimm-vtk-popup-border-color: rgba(255, 150, 100, 0.12);
+  --iimm-vtk-popup-shadow: 0 8px 24px rgba(40, 15, 5, 0.5);
+  --iimm-vtk-popup-color: #e8a888;
+  --iimm-vtk-popup-label-color: rgba(255, 150, 100, 0.5);
+
+  // Input
+  --iimm-vtk-input-bg: rgba(40, 20, 10, 0.5);
+  --iimm-vtk-input-border-color: rgba(255, 150, 100, 0.12);
+  --iimm-vtk-input-border-color-focus: #ff9060;
+  --iimm-vtk-input-color: #e8a888;
+
+  // Slider
+  --iimm-vtk-slider-track-bg: rgba(255, 150, 100, 0.12);
+  --iimm-vtk-slider-thumb-bg: #ff9060;
+
+  // Loading
+  --iimm-vtk-loading-bg: rgba(26, 15, 10, 0.8);
+  --iimm-vtk-loading-card-bg: rgba(50, 30, 20, 0.6);
+  --iimm-vtk-loading-card-border-color: rgba(255, 150, 100, 0.12);
+  --iimm-vtk-loading-text-color: #ffc0a0;
+  --iimm-vtk-loading-text-secondary: rgba(255, 150, 100, 0.6);
+  --iimm-vtk-loading-progress-gradient: linear-gradient(90deg, #e85d04, #faa307);
+
+  // Error
+  --iimm-vtk-error-bg: rgba(255, 100, 100, 0.15);
+  --iimm-vtk-error-border-color: rgba(255, 100, 100, 0.3);
+  --iimm-vtk-error-color: #ff6b6b;
+  --iimm-vtk-error-overlay-bg: rgba(26, 15, 10, 0.7);
+
+  // Extra Toggle
+  --iimm-vtk-extra-toggle-bg: rgba(50, 30, 20, 0.95);
+  --iimm-vtk-extra-toggle-bg-hover: rgba(65, 40, 28, 1);
+  --iimm-vtk-extra-toggle-border-color: rgba(255, 150, 100, 0.15);
+  --iimm-vtk-extra-toggle-color: rgba(255, 255, 255, 0.7);
+  --iimm-vtk-extra-toggle-color-hover: rgba(255, 255, 255, 0.95);
+
+  // Portal
+  --iimm-vtk-portal-panel-bg: #1a0f0a;
+  --iimm-vtk-portal-panel-border-color: rgba(255, 150, 100, 0.12);
+  --iimm-vtk-portal-notification-bg: #1a0f0a;
+}
+
+// ---- Light Theme ----
+.iimm-vtk-theme-light {
+  // Toolbar
+  --iimm-vtk-toolbar-bg: rgba(255, 255, 255, 0.88);
+  --iimm-vtk-toolbar-border-color: rgba(0, 0, 0, 0.08);
+
+  // Button
+  --iimm-vtk-btn-bg: rgba(0, 0, 0, 0.04);
+  --iimm-vtk-btn-bg-hover: rgba(0, 0, 0, 0.08);
+  --iimm-vtk-btn-bg-active: rgba(0, 100, 80, 0.12);
+  --iimm-vtk-btn-color: #3a3a4a;
+  --iimm-vtk-btn-color-hover: #1a1a2e;
+  --iimm-vtk-btn-color-active: #00796b;
+
+  // Separator
+  --iimm-vtk-toolbar-separator-color: rgba(0, 0, 0, 0.1);
+
+  // Extension
+  --iimm-vtk-extension-bg: rgba(255, 255, 255, 0.88);
+  --iimm-vtk-extension-separator-color: rgba(0, 0, 0, 0.1);
+
+  // Info Panel
+  --iimm-vtk-info-panel-bg: rgba(255, 255, 255, 0.88);
+  --iimm-vtk-info-panel-label-color: rgba(0, 0, 0, 0.45);
+  --iimm-vtk-info-panel-value-color: rgba(0, 0, 0, 0.85);
+
+  // Popup
+  --iimm-vtk-popup-bg: #ffffff;
+  --iimm-vtk-popup-bg-secondary: #f5f5f8;
+  --iimm-vtk-popup-border-color: rgba(0, 0, 0, 0.1);
+  --iimm-vtk-popup-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --iimm-vtk-popup-color: #3a3a4a;
+  --iimm-vtk-popup-label-color: rgba(0, 0, 0, 0.45);
+
+  // Input
+  --iimm-vtk-input-bg: rgba(0, 0, 0, 0.04);
+  --iimm-vtk-input-border-color: rgba(0, 0, 0, 0.12);
+  --iimm-vtk-input-border-color-focus: #00796b;
+  --iimm-vtk-input-color: #3a3a4a;
+
+  // Slider
+  --iimm-vtk-slider-track-bg: rgba(0, 0, 0, 0.1);
+  --iimm-vtk-slider-thumb-bg: #00796b;
+
+  // Loading
+  --iimm-vtk-loading-bg: rgba(255, 255, 255, 0.75);
+  --iimm-vtk-loading-card-bg: rgba(255, 255, 255, 0.9);
+  --iimm-vtk-loading-card-border-color: rgba(0, 0, 0, 0.08);
+  --iimm-vtk-loading-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --iimm-vtk-loading-text-color: rgba(0, 0, 0, 0.85);
+  --iimm-vtk-loading-text-secondary: rgba(0, 0, 0, 0.55);
+  --iimm-vtk-loading-progress-gradient: linear-gradient(90deg, #3b82f6, #10b981);
+
+  // Error
+  --iimm-vtk-error-bg: rgba(220, 38, 38, 0.08);
+  --iimm-vtk-error-border-color: rgba(220, 38, 38, 0.2);
+  --iimm-vtk-error-color: #dc2626;
+  --iimm-vtk-error-overlay-bg: rgba(255, 255, 255, 0.55);
+
+  // Extra Toggle
+  --iimm-vtk-extra-toggle-bg: rgba(255, 255, 255, 0.9);
+  --iimm-vtk-extra-toggle-bg-hover: rgba(255, 255, 255, 1);
+  --iimm-vtk-extra-toggle-border-color: rgba(0, 0, 0, 0.1);
+  --iimm-vtk-extra-toggle-color: rgba(0, 0, 0, 0.5);
+  --iimm-vtk-extra-toggle-color-hover: rgba(0, 0, 0, 0.8);
+
+  // Portal
+  --iimm-vtk-portal-panel-bg: #ffffff;
+  --iimm-vtk-portal-panel-border-color: rgba(0, 0, 0, 0.1);
+  --iimm-vtk-portal-panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --iimm-vtk-portal-notification-bg: #ffffff;
+}
