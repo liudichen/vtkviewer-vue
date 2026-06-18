@@ -1,11 +1,3 @@
-/*
- * @Author: 柳涤尘
- * @Email: liudichen@foxmail.com
- * @Website: https://www.iimm.ink
- * @Date: 2026-06-13 18:10:46
- * @LastEditTime: 2026-06-13 21:48:05
- * @Description:
- */
 /**
  * I18nManager - 国际化翻译单例管理器
  *
@@ -34,9 +26,10 @@ import { BUILTIN_LANGS } from '@/configs'
  * 与 vue-i18n / i18next / react-intl 的 t() 签名兼容。
  *
  * @param key 翻译 key
+ * @param options 翻译选项
  * @returns 翻译后的字符串；未找到对应 key 时返回 key 自身
  */
-export type I18nTranslateFunction = (key: string) => string
+export type I18nTranslateFunction = (key: string, options?: any) => string
 
 /** 语言选项（对应 UI 下拉菜单中的语言条目） */
 export interface LanguageOption {
