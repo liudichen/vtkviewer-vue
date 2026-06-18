@@ -110,22 +110,22 @@ export class DrcPlugin extends PluginBase<PluginConfig> implements IFormatPlugin
     }
 
     // 尝试从 ctx.decoders 配置的路径动态加载
-    const decoderPath = this.ctx.decoders['draco']
+    const decoderPath = this.ctx.decoders?.['draco']
     if (decoderPath) {
-      await this.loadFromScript(decoderPath)
-      dracoDecoderReady = true
-      this.debugLog(
-        `[${this.metadata.name}] ${i18n.translate('vtkviewer.plugin.drc.decoderReady')}`
-      )
-      return
+      try {
+        await this.loadFromScript(decoderPath)
+        dracoDecoderReady = true
+        this.debugLog(
+          `[${this.metadata.name}] ${i18n.translate('vtkviewer.plugin.drc.decoderReady')}`
+        )
+        return
+      } catch (error) {}
     }
 
     // 尝试动态 import npm 包
     // 使用 new Function 构造，完全避免 Vite 静态扫描
     try {
-      const importFn = new Function(
-        'return import("dra" + "co3d")'
-      ) as () => Promise<any>
+      const importFn = new Function('return import("dra" + "co3d")') as () => Promise<any>
       const module = await importFn()
       const { createDecoderModule } = module
       await vtkDracoReader.setDracoDecoder(createDecoderModule)
@@ -134,9 +134,18 @@ export class DrcPlugin extends PluginBase<PluginConfig> implements IFormatPlugin
         `[${this.metadata.name}] ${i18n.translate('vtkviewer.plugin.drc.decoderReady')}`
       )
       return
-    } catch {
+    } catch (error) {
       // npm 包不可用，继续
     }
+
+    try {
+      await this.loadFromScript('/draco_decoder.js')
+      dracoDecoderReady = true
+      this.debugLog(
+        `[${this.metadata.name}] ${i18n.translate('vtkviewer.plugin.drc.decoderReady')}`
+      )
+      return
+    } catch (error) {}
 
     throw new Error(
       `[${this.metadata.name}] ${i18n.translate('vtkviewer.plugin.drc.decoderNotReady')}`
@@ -147,9 +156,7 @@ export class DrcPlugin extends PluginBase<PluginConfig> implements IFormatPlugin
     return new Promise<void>((resolve, reject) => {
       // 如果 window.DracoDecoderModule 已存在，直接初始化
       if (typeof (window as any).DracoDecoderModule !== 'undefined') {
-        vtkDracoReader
-          .setDracoDecoder((window as any).DracoDecoderModule)
-          .then(resolve, reject)
+        vtkDracoReader.setDracoDecoder((window as any).DracoDecoderModule).then(resolve, reject)
         return
       }
 
@@ -157,9 +164,7 @@ export class DrcPlugin extends PluginBase<PluginConfig> implements IFormatPlugin
       script.src = scriptPath
       script.onload = () => {
         if (typeof (window as any).DracoDecoderModule !== 'undefined') {
-          vtkDracoReader
-            .setDracoDecoder((window as any).DracoDecoderModule)
-            .then(resolve, reject)
+          vtkDracoReader.setDracoDecoder((window as any).DracoDecoderModule).then(resolve, reject)
         } else {
           reject(
             new Error(
